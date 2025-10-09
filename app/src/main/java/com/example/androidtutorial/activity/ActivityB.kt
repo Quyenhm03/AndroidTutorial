@@ -1,18 +1,19 @@
-package com.example.androidtutorial
+package com.example.androidtutorial.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.androidtutorial.R
 
 class ActivityB : AppCompatActivity() {
     private val TAG = "ActivityB"
+    private val COUNT_KEY = "count_key"
+
     private lateinit var btnReturn : Button
+    private lateinit var txtReceive: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +21,19 @@ class ActivityB : AppCompatActivity() {
         setContentView(R.layout.activity_b)
         Log.d(TAG, "OnCreate")
 
-        btnReturn = findViewById(R.id.btn_return)
+        val receive = intent.getIntExtra(COUNT_KEY, 0)
+
+        initView()
+        txtReceive.text = receive.toString()
 
         btnReturn.setOnClickListener {
             finish()
         }
+    }
+
+    fun initView() {
+        btnReturn = findViewById(R.id.btn_return)
+        txtReceive = findViewById(R.id.txt_receive)
     }
 
     override fun onStart() {

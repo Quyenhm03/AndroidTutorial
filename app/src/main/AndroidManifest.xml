@@ -13,10 +13,20 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".ActivityB"
+            android:name=".activity.ActivityA"
             android:exported="false" />
         <activity
-            android:name=".ActivityA"
+            android:name=".lauchmode.ActivityD"
+            android:exported="false"
+            android:launchMode="singleInstance"/>
+        <activity
+            android:name=".lauchmode.ActivityE"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ActivityB"
+            android:exported="false" />
+        <activity
+            android:name=".lauchmode.ActivityC"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
