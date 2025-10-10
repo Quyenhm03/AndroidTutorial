@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidtutorial.R
+import com.example.androidtutorial.databinding.ActivityEBinding
 import com.example.androidtutorial.lauchmode.ActivityD.Companion
 
 class ActivityE : AppCompatActivity() {
@@ -19,9 +20,7 @@ class ActivityE : AppCompatActivity() {
         private var totalInstanceCount = 0
     }
 
-    private lateinit var btnToC: Button
-    private lateinit var btnToD: Button
-    private lateinit var txtInfo: TextView
+    private lateinit var binding: ActivityEBinding
 
     private var instanceCount = 0
 
@@ -29,28 +28,20 @@ class ActivityE : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_e)
 
-        initView()
-
         totalInstanceCount++
         instanceCount = totalInstanceCount
         updateInfo()
 
-        btnToC.setOnClickListener {
+        binding.btnToC.setOnClickListener {
             startActivity(Intent(this, ActivityC::class.java))
         }
-        btnToD.setOnClickListener {
+        binding.btnToD.setOnClickListener {
             startActivity(Intent(this, ActivityD::class.java))
         }
     }
 
-    fun initView() {
-        btnToC = findViewById(R.id.btn_to_c)
-        btnToD = findViewById(R.id.btn_to_d)
-        txtInfo = findViewById(R.id.txt_info)
-    }
-
     fun updateInfo() {
-        txtInfo.text = "ActivityE\nInstance Count: $instanceCount\nTaskID: $taskId"
+        binding.txtInfo.text = "ActivityE\nInstance Count: $instanceCount\nTaskID: $taskId"
     }
 
     override fun onNewIntent(intent: Intent?) {

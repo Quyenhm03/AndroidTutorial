@@ -2,6 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +20,7 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".activity.ActivityA"
+            android:name=".lauchmode.ActivityC"
             android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityD"
@@ -26,7 +33,7 @@
             android:name=".activity.ActivityB"
             android:exported="false" />
         <activity
-            android:name=".lauchmode.ActivityC"
+            android:name=".activity.ActivityA"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,19 +1,21 @@
 package com.example.androidtutorial.activity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidtutorial.R
+import com.example.androidtutorial.databinding.ActivityBBinding
 
 class ActivityB : AppCompatActivity() {
     private val TAG = "ActivityB"
     private val COUNT_KEY = "count_key"
 
-    private lateinit var btnReturn : Button
-    private lateinit var txtReceive: TextView
+    private lateinit var binding: ActivityBBinding
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,19 +23,27 @@ class ActivityB : AppCompatActivity() {
         setContentView(R.layout.activity_b)
         Log.d(TAG, "OnCreate")
 
-        val receive = intent.getIntExtra(COUNT_KEY, 0)
+        val extras = intent.extras
+        val count = extras?.getInt(COUNT_KEY, 0) ?: 0
+        val countStr = extras?.getString("count_str") ?: "No string received"
 
-        initView()
-        txtReceive.text = receive.toString()
+        binding.txtReceive.text = count.toString()
 
-        btnReturn.setOnClickListener {
-            finish()
-        }
+        onClick()
     }
 
-    fun initView() {
-        btnReturn = findViewById(R.id.btn_return)
-        txtReceive = findViewById(R.id.txt_receive)
+    fun onClick() {
+        binding.btnReturn.setOnClickListener {
+            finish()
+        }
+
+        binding.btnSend.setOnClickListener {
+            val intent = Intent(this, ActivityA::class.java)
+            intent.putExtra("result", binding.edtInput.text.toString())
+
+            setResult(RESULT_OK, intent)
+            finish()
+        }
     }
 
     override fun onStart() {
