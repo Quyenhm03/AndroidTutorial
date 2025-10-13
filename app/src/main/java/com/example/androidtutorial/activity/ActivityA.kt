@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.androidtutorial.databinding.ActivityABinding
-
+import com.example.androidtutorial.permission.Permission
 
 class ActivityA : AppCompatActivity() {
     private val TAG = "ActivityA"
@@ -24,6 +24,8 @@ class ActivityA : AppCompatActivity() {
 
     private lateinit var binding: ActivityABinding
     private lateinit var launcher: ActivityResultLauncher<Intent>
+
+    private val permission: Permission by lazy { Permission(this) }
 
     private var cnt = 0
 
@@ -86,9 +88,7 @@ class ActivityA : AppCompatActivity() {
     }
 
     fun sendSMS(phoneNumber: String, message: String) {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (permission.isHasPermissionSendSMS()) {
             try {
                 val smsManager = SmsManager.getDefault()
                 smsManager.sendTextMessage(phoneNumber, null, message, null, null)
@@ -99,7 +99,7 @@ class ActivityA : AppCompatActivity() {
                 Log.e(TAG, "Error: ${e.message}")
             }
         } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.SEND_SMS), 1)
+            permission.requestPermissionSendMSM(this, 1)
         }
     }
 
@@ -131,6 +131,9 @@ class ActivityA : AppCompatActivity() {
         }
         binding.btnGetResult.setOnClickListener {
             val intent = Intent(this, ActivityB::class.java)
+            val bundle = Bundle()
+            bundle.putInt(COUNT_KEY, cnt)
+            intent.putExtras(bundle)
             launcher.launch(intent)
         }
     }

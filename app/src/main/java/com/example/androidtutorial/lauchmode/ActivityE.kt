@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.androidtutorial.R
+import com.example.androidtutorial.databinding.ActivityABinding
 import com.example.androidtutorial.databinding.ActivityEBinding
 import com.example.androidtutorial.lauchmode.ActivityD.Companion
 
@@ -26,7 +27,8 @@ class ActivityE : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_e)
+        binding = ActivityEBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         totalInstanceCount++
         instanceCount = totalInstanceCount

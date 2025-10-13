@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidtutorial.R
+import com.example.androidtutorial.databinding.ActivityABinding
 import com.example.androidtutorial.databinding.ActivityCBinding
 import com.example.androidtutorial.lauchmode.ActivityD.Companion
 
@@ -23,7 +24,8 @@ class ActivityC : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_c)
+        binding = ActivityCBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         totalInstanceCount++
         instanceCount = totalInstanceCount

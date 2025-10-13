@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidtutorial.R
+import com.example.androidtutorial.databinding.ActivityABinding
 import com.example.androidtutorial.databinding.ActivityBBinding
 
 class ActivityB : AppCompatActivity() {
@@ -20,7 +21,8 @@ class ActivityB : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_b)
+        binding = ActivityBBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         Log.d(TAG, "OnCreate")
 
         val extras = intent.extras
