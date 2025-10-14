@@ -6,8 +6,8 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -20,12 +20,21 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".layout.ItineraryActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".lauchmode.ActivityC"
             android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityD"
             android:exported="false"
-            android:launchMode="singleInstance"/>
+            android:launchMode="singleInstance" />
         <activity
             android:name=".lauchmode.ActivityE"
             android:exported="false" />
@@ -34,12 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
     </application>
 

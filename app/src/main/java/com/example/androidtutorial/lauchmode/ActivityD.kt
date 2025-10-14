@@ -3,11 +3,7 @@ package com.example.androidtutorial.lauchmode
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityABinding
 import com.example.androidtutorial.databinding.ActivityDBinding
 
 class ActivityD : AppCompatActivity() {

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">AndroidTutorial</string>
+    <string name="itinerary_title">Khám phá Hà Nội</string>
+    <string name="author_name">Nguyễn Thị Quyên</string>
+    <string name="create_date">14/10/2025</string>
+    <string name="itinerary_description">Chuyến đi 2 ngày khám phá Hà Nội kết hợp lịch sử, văn hóa và ẩm thực, từ các di tích biểu tượng, phố cổ sầm uất đến không gian thanh bình của Hồ Tây và làng gốm truyền thống.</string>
+    <string name="date1">Ngày 1</string>
+    <string name="location1_date1">Hồ Hoàn Kiếm (8:00 - 10:00)</string>
+    <string name="location1_date1_des">Trái tim Hà Nội với cầu Thê Húc và Đền Ngọc Sơn, nổi tiếng với truyền thuyết gươm thần.</string>
+    <string name="location2_date1">Phố cổ Hà Nội (14:00 - 17:00)</string>
+    <string name="location2_date1_des">36 phố phường với ẩm thực đường phố (phở, bún chả) và không khí buôn bán sôi động.</string>
+    <string name="date2">Ngày 2</string>
+    <string name="comment">Bình luận</string>
+    <string name="comment_nummber">(3 lượt)</string>
+    <string name="share">Chia sẻ với</string>
+    <string name="facebook">Facebook</string>
+    <string name="instagram">Instagram</string>
+    <string name="twitter">Twitter</string>
 </resources>

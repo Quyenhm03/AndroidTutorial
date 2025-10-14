@@ -3,16 +3,9 @@ package com.example.androidtutorial.lauchmode
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityABinding
 import com.example.androidtutorial.databinding.ActivityEBinding
-import com.example.androidtutorial.lauchmode.ActivityD.Companion
+
 
 class ActivityE : AppCompatActivity() {
     private val TAG = "ActivityE"
