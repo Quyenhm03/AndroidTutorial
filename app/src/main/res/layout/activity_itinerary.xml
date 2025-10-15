@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgItinerary"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -32,7 +32,7 @@
             android:layout_marginBottom="30dp"/>
     </FrameLayout>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/introduceLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,13 +40,13 @@
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/itineraryLayout">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="20dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -59,7 +59,7 @@
                     app:cardMaxElevation="12dp"
                     app:cardPreventCornerOverlap="true">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgProfile"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
@@ -85,7 +85,7 @@
                     android:textColor="@color/normal_text"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <View
                 android:layout_width="match_parent"
@@ -94,7 +94,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/line_shape"/>
 
-            <LinearLayout
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -116,19 +116,19 @@
                     <TableRow
                         android:gravity="center">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:src="@drawable/ic_facebook"
                             android:layout_gravity="center"/>
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:src="@drawable/ic_instagram"
                             android:layout_gravity="center"/>
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_margin="4dp"
@@ -158,7 +158,7 @@
                             android:layout_marginTop="4dp"/>
                     </TableRow>
                 </TableLayout>
-            </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
             <View
                 android:layout_width="match_parent"
@@ -173,8 +173,8 @@
                 android:text="@string/itinerary_description"
                 android:textColor="@color/normal_text"
                 android:textSize="16sp"/>
-        </LinearLayout>
-    </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ScrollView
         android:id="@+id/scrDetail"
@@ -184,7 +184,7 @@
         app:layout_constraintTop_toBottomOf="@id/introduceLayout"
         app:layout_constraintBottom_toTopOf="@id/commentLayout">
 
-        <LinearLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -215,7 +215,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/btnDetail1"/>
 
-                <LinearLayout
+                <androidx.appcompat.widget.LinearLayoutCompat
                     android:id="@+id/dayLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -232,7 +232,7 @@
                         android:columnCount="3"
                         android:rowCount="2">
 
-                        <ImageView
+                        <androidx.appcompat.widget.AppCompatImageView
                             android:id="@+id/imgLocation1"
                             android:layout_width="24dp"
                             android:layout_height="30dp"
@@ -281,7 +281,7 @@
                             app:cardMaxElevation="12dp"
                             app:cardPreventCornerOverlap="true">
 
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="110dp"
                                 android:layout_height="80dp"
                                 android:src="@drawable/img_ho_hoan_kiem"
@@ -289,7 +289,7 @@
                         </androidx.cardview.widget.CardView>
                     </GridLayout>
 
-                    <LinearLayout
+                    <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/location2Layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -302,7 +302,7 @@
                             android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-                            <ImageView
+                            <androidx.appcompat.widget.AppCompatImageView
                                 android:id="@+id/imgLocation2"
                                 android:layout_width="24dp"
                                 android:layout_height="30dp"
@@ -319,7 +319,7 @@
                                 android:layout_toRightOf="@id/imgLocation2"/>
                         </RelativeLayout>
 
-                        <LinearLayout
+                        <androidx.appcompat.widget.LinearLayoutCompat
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
@@ -342,15 +342,15 @@
                                 app:cardMaxElevation="12dp"
                                 app:cardPreventCornerOverlap="true">
 
-                                <ImageView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:layout_width="110dp"
                                     android:layout_height="80dp"
                                     android:src="@drawable/img_pho_co"
                                     android:scaleType="centerCrop"/>
                             </androidx.cardview.widget.CardView>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -382,7 +382,7 @@
                     app:layout_constraintStart_toEndOf="@id/btnDetail2"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout

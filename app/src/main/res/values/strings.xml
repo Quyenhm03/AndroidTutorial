@@ -16,4 +16,6 @@
     <string name="facebook">Facebook</string>
     <string name="instagram">Instagram</string>
     <string name="twitter">Twitter</string>
+    <string name="comment_title">Bình luận từ cộng đồng</string>
+    <string name="like_note">người nghĩ đánh giá này hữu ích</string>
 </resources>
