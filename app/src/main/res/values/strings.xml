@@ -18,4 +18,15 @@
     <string name="twitter">Twitter</string>
     <string name="comment_title">Bình luận từ cộng đồng</string>
     <string name="like_note">người nghĩ đánh giá này hữu ích</string>
+
+    <string name="title_pw_sale">Optimize Storage, Get Space</string>
+    <string name="price_per_week_strike"><strike><b>$8.99</b>/week</strike></string>
+    <string name="off_50_percent">OFF 50%</string>
+    <string name="price">$3.99</string>
+    <string name="per_week">/week</string>
+    <string name="btn_claim_offer">CLAIM OFFER</string>
+    <string name="content_pw">$3.99 for first week then $8.99 next week.\nBilled weekly, cancel anytime.</string>
+    <string name="policy">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy</b></u> policies\n\u2022 Subscription gives you access to V9Compress\'s premium features, all ads will be removed.\n\u2022 Subscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\n\u2022 You will not be charged if subscription is canceled before trial period ends.\n\u2022 Subscription is not required to use V9Compress</string>
+    <string name="load_error">We couldn’t load the infomation</string>
+    <string name="try_again"><u>Try again</u></string>
 </resources>

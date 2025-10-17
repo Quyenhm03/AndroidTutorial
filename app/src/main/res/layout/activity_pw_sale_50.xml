@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/bgView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_pwl_sale_50"
+        app:layout_constraintDimensionRatio="2:3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieAnim"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/bgView"
+        app:layout_constraintTop_toTopOf="@id/bgView"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/compress_pw_50" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnClose"
+        android:layout_width="@dimen/_16sdp"
+        android:layout_height="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_38sdp"
+        android:background="@drawable/btn_close"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/adLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_minus38sdp"
+        android:background="@drawable/bg_radius_top_12"
+        android:backgroundTint="#190E2B"
+        android:paddingHorizontal="@dimen/_11sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bgView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:fontFamily="@font/funnel_sans_semibold"
+            android:gravity="center_horizontal"
+            android:text="@string/title_pw_sale"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_54sdp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/funnelsans_regular"
+                    android:text="@string/price_per_week_strike"
+                    android:textColor="@color/super_light"
+                    android:textSize="@dimen/_15sdp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    app:cardBackgroundColor="#5B5FF6"
+                    app:cardCornerRadius="@dimen/_3sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/funnelsans_bold"
+                        android:paddingHorizontal="@dimen/_5sdp"
+                        android:paddingVertical="@dimen/_3sdp"
+                        android:text="@string/off_50_percent"
+                        android:textColor="@color/super_light"
+                        android:textSize="@dimen/_11sdp" />
+
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_3sdp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/funnelsans_bold"
+                    android:text="@string/price"
+                    android:textColor="@color/super_light"
+                    android:textSize="@dimen/_40sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/funnelsans_bold"
+                    android:text="@string/per_week"
+                    android:textColor="@color/super_light"
+                    android:textSize="@dimen/_24sdp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClaimOffer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_radius_16"
+            android:fontFamily="@font/funnelsans_extrabold"
+            android:paddingHorizontal="@dimen/_77sdp"
+            android:paddingVertical="@dimen/_10sdp"
+            android:text="@string/btn_claim_offer"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintTop_toBottomOf="@+id/llPrice" />
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:indeterminateTint="@color/white"
+            android:elevation="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/btnClaimOffer"
+            app:layout_constraintEnd_toEndOf="@id/btnClaimOffer"
+            app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
+            app:layout_constraintTop_toTopOf="@id/btnClaimOffer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:fontFamily="@font/funnel_sans_medium"
+            android:gravity="center_horizontal"
+            android:text="@string/content_pw"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/txtPolicy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/funnel_sans_semibold"
+                android:text="@string/load_error"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/funnelsans_regular"
+                android:text="@string/try_again"
+                android:textColor="#CCFFF8F8"
+                android:textSize="@dimen/_11sdp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPolicy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:fontFamily="@font/funnelsans_regular"
+            android:gravity="center_horizontal"
+            android:text="@string/policy"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txtContent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

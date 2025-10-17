@@ -20,13 +20,19 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".layout.ItineraryActivity"
+            android:name=".layout.PaywallActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".layout.ItineraryActivity"
+            android:exported="false">
+
         </activity>
         <activity
             android:name=".lauchmode.ActivityC"
@@ -43,8 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>
