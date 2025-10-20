@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#D0DFFF"
+    android:padding="@dimen/_12sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unlock_feature_title"
+        android:textSize="@dimen/_43sdp"
+        android:textColor="#0E111B"
+        android:textAllCaps="true"
+        android:layout_marginTop="@dimen/_42sdp"
+        android:fontFamily="@font/bebas_neue_regular"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgBackGround"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_unlock_feature"
+        app:layout_constraintTop_toBottomOf="@id/txtTitle"
+        android:layout_marginTop="@dimen/_9sdp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtSubTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/unlock_feature_subtitle"
+        android:textSize="@dimen/_11sdp"
+        android:textColor="#0E111B"
+        app:fontFamily="@font/readex_pro_regular"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/imgBackGround"
+        android:layout_marginTop="@dimen/_9sdp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_radius_12"
+        android:backgroundTint="#0E111B"
+        android:text="@string/btn_try"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/readex_pro_bold"
+        android:textAllCaps="false"
+        android:padding="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/txtSubTitle"
+        android:layout_marginTop="@dimen/_12sdp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/policy2"
+        android:textColor="#4D5A68"
+        android:textSize="@dimen/_8sdp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/btnTry"
+        android:layout_marginTop="@dimen/_12sdp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

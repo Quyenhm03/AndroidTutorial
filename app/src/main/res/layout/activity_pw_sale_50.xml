@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/bgView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/bg_pwl_sale_50"
-        app:layout_constraintDimensionRatio="2:3"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnim"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/bgView"
-        app:layout_constraintTop_toTopOf="@id/bgView"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/compress_pw_50" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/bgView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_pwl_sale_50"
+            app:layout_constraintDimensionRatio="2:3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnClose"
-        android:layout_width="@dimen/_16sdp"
-        android:layout_height="@dimen/_16sdp"
-        android:layout_marginStart="@dimen/_14sdp"
-        android:layout_marginTop="@dimen/_38sdp"
-        android:background="@drawable/btn_close"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieAnim"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/bgView"
+            app:layout_constraintTop_toTopOf="@id/bgView"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/compress_pw_50" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_38sdp"
+            android:background="@drawable/btn_close"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/adLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_minus38sdp"
+        android:layout_height="wrap_content"
         android:background="@drawable/bg_radius_top_12"
         android:backgroundTint="#190E2B"
         android:paddingHorizontal="@dimen/_11sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bgView">
+        android:paddingBottom="@dimen/_20sdp"
+        app:behavior_fitToContents="true"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="@dimen/_210sdp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtTitle"
@@ -55,79 +63,79 @@
             android:textSize="@dimen/_18sdp"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/llPrice"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPriceStroke"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/funnelsans_regular"
+            android:text="@string/price_per_week_strike"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_15sdp"
+            app:layout_constraintBottom_toBottomOf="@id/txtOff"
+            app:layout_constraintEnd_toStartOf="@id/txtOff"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/txtOff" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_54sdp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent">
+            android:background="@drawable/bg_radius_4"
+            android:backgroundTint="#5B5FF6"
+            android:fontFamily="@font/funnelsans_bold"
+            android:paddingHorizontal="@dimen/_5sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="@string/off_50_percent"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtPriceStroke"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/funnelsans_bold"
+            android:text="@string/price"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_40sdp"
+            app:layout_constraintEnd_toStartOf="@id/txtPerWeek"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtOff" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/funnelsans_regular"
-                    android:text="@string/price_per_week_strike"
-                    android:textColor="@color/super_light"
-                    android:textSize="@dimen/_15sdp" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtPerWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:fontFamily="@font/funnelsans_bold"
+            android:text="@string/per_week"
+            android:textColor="@color/super_light"
+            android:textSize="@dimen/_24sdp"
+            app:layout_constraintBottom_toBottomOf="@id/txtPrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/txtPrice" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    app:cardBackgroundColor="#5B5FF6"
-                    app:cardCornerRadius="@dimen/_3sdp">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/funnelsans_bold"
-                        android:paddingHorizontal="@dimen/_5sdp"
-                        android:paddingVertical="@dimen/_3sdp"
-                        android:text="@string/off_50_percent"
-                        android:textColor="@color/super_light"
-                        android:textSize="@dimen/_11sdp" />
-
-                </androidx.cardview.widget.CardView>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_3sdp"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/funnelsans_bold"
-                    android:text="@string/price"
-                    android:textColor="@color/super_light"
-                    android:textSize="@dimen/_40sdp" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/funnelsans_bold"
-                    android:text="@string/per_week"
-                    android:textColor="@color/super_light"
-                    android:textSize="@dimen/_24sdp" />
-
-            </androidx.appcompat.widget.LinearLayoutCompat>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        <View
+            android:id="@+id/viewLoad"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_radius_10"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/txtPrice"
+            app:layout_constraintTop_toTopOf="@id/txtOff" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClaimOffer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
             android:background="@drawable/bg_radius_16"
             android:fontFamily="@font/funnelsans_extrabold"
             android:paddingHorizontal="@dimen/_77sdp"
@@ -135,14 +143,14 @@
             android:text="@string/btn_claim_offer"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp"
-            app:layout_constraintTop_toBottomOf="@+id/llPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
         <ProgressBar
             android:id="@+id/progress"
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
-            android:indeterminateTint="@color/white"
             android:elevation="8dp"
+            android:indeterminateTint="@color/white"
             app:layout_constraintBottom_toBottomOf="@id/btnClaimOffer"
             app:layout_constraintEnd_toEndOf="@id/btnClaimOffer"
             app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
@@ -161,6 +169,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnClaimOffer" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -204,4 +213,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
