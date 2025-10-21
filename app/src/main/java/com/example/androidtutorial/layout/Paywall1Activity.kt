@@ -21,7 +21,9 @@ class Paywall1Activity : AppCompatActivity() {
 
         setupBottomSheet()
 
-        val state = 0
+        val extras = intent.extras
+        val state = extras?.getInt("state", 0) ?: 0
+
         when(state) {
             0 -> stateIsLoading()
             1 -> stateLoaded()
@@ -45,25 +47,23 @@ class Paywall1Activity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun stateIsLoading() {
-        val priceViews = listOf(binding.txtPriceStroke, binding.txtOff, binding.txtPrice, binding.txtPerWeek)
-        priceViews.forEach { it.visibility = View.INVISIBLE }
-        binding.viewLoad.visibility = View.VISIBLE
-        binding.progress.visibility = View.VISIBLE
+        binding.groupPrice.visibility = View.INVISIBLE
+        binding.groupError.visibility = View.GONE
+        binding.groupLoading.visibility = View.VISIBLE
         binding.btnClaimOffer.text = ""
     }
 
     private fun stateLoaded() {
-        val priceViews = listOf(binding.txtPriceStroke, binding.txtOff, binding.txtPrice, binding.txtPerWeek)
-        priceViews.forEach { it.visibility = View.VISIBLE }
-        binding.viewLoad.visibility = View.INVISIBLE
-        binding.progress.visibility = View.INVISIBLE
+        binding.groupPrice.visibility = View.VISIBLE
+        binding.groupError.visibility = View.GONE
+        binding.groupLoading.visibility = View.GONE
         binding.btnClaimOffer.text = getString(R.string.btn_claim_offer)
     }
 
     private fun stateError() {
-        val priceViews = listOf(binding.txtPriceStroke, binding.txtOff, binding.txtPrice,
-            binding.txtPerWeek, binding.btnClaimOffer, binding.progress)
-        priceViews.forEach { it.visibility = View.INVISIBLE }
-        binding.llError.visibility = View.VISIBLE
+        binding.groupPrice.visibility = View.INVISIBLE
+        binding.groupLoading.visibility = View.GONE
+        binding.groupError.visibility = View.VISIBLE
+        binding.btnClaimOffer.visibility = View.INVISIBLE
     }
 }

@@ -1,173 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#F0F7FF">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="@dimen/_12sdp"
-        android:layout_height="@dimen/_12sdp"
-        android:background="@drawable/ic_cancel"
-        android:layout_marginTop="@dimen/_55sdp"
-        android:layout_marginEnd="@dimen/_26sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-    <RadioGroup
-        android:id="@+id/toggleGroup"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_36sdp"
-        android:orientation="horizontal"
-        android:background="@drawable/bg_toggle"
-        android:padding="@dimen/_3sdp"
-        app:layout_constraintWidth_percent="0.6"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/_55sdp">
-
-        <RadioButton
-            android:id="@+id/btnYearly"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/yearly"
-            android:textColor="@color/toggle_text_color"
-            android:textSize="@dimen/_11sdp"
-            android:fontFamily="@font/readex_pro_regular"
-            android:background="@drawable/bg_selection_left"
-            android:button="@null"
-            android:gravity="center"
-            android:checked="true"/>
-
-        <RadioButton
-            android:id="@+id/btnWeekly"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="@string/weekly"
-            android:textColor="@color/toggle_text_color"
-            android:textSize="@dimen/_11sdp"
-            android:fontFamily="@font/readex_pro_regular"
-            android:background="@drawable/bg_selection_right"
-            android:button="@null"
-            android:gravity="center"/>
-    </RadioGroup>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/pw_onboarding_title"
-        android:textSize="@dimen/_22sdp"
-        android:textColor="#0F1E47"
-        android:fontFamily="@font/readex_pro_bold"
-        android:textAllCaps="true"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@id/toggleGroup"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgBackGround"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="@drawable/bg_pw_onboarding"
-        android:layout_marginTop="@dimen/_15sdp"
-        app:layout_constraintHeight="0.47"
-        app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txtFee"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:text="@string/unlock_feature_subtitle"
-        android:textSize="@dimen/_11sdp"
-        android:textColor="#0F1E47"
-        android:fontFamily="@font/readex_pro_regular"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/imgBackGround"/>
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/llFreeTrial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_radius_12_border_1"
-        android:padding="@dimen/_12sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginVertical="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@id/txtFee">
+        android:background="#F0F7FF">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:background="@drawable/ic_cancel"
+            android:layout_marginTop="@dimen/_22sdp"
+            android:layout_marginEnd="@dimen/_26sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <RadioGroup
+            android:id="@+id/toggleGroup"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_36sdp"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_toggle"
+            android:padding="@dimen/_3sdp"
+            app:layout_constraintWidth_percent="0.6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_15sdp">
+
+            <RadioButton
+                android:id="@+id/btnYearly"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/yearly"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/readex_pro_regular"
+                android:background="@drawable/bg_selection_left"
+                android:button="@null"
+                android:gravity="center"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/btnWeekly"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/weekly"
+                android:textColor="@color/toggle_text_color"
+                android:textSize="@dimen/_11sdp"
+                android:fontFamily="@font/readex_pro_regular"
+                android:background="@drawable/bg_selection_right"
+                android:button="@null"
+                android:gravity="center"/>
+        </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/txtFreeTrial"
-            android:layout_width="wrap_content"
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/free_trial_enabled"
-            android:textSize="@dimen/_11sdp"
+            android:text="@string/pw_onboarding_title"
+            android:textSize="@dimen/_22sdp"
             android:textColor="#0F1E47"
-            android:fontFamily="@font/readex_pro_regular"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:fontFamily="@font/readex_pro_bold"
+            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@id/toggleGroup"/>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/swToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_12sdp"
-            android:checked="true"
-            android:clickable="false"
-            android:thumb="@drawable/thumb"
-            app:layout_constraintBottom_toBottomOf="@id/txtFreeTrial"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBackGround"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_pw_onboarding"
+            android:layout_marginTop="@dimen/_15sdp"
+            app:layout_constraintHeight="0.47"
+            app:layout_constraintTop_toBottomOf="@id/txtTitle"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtFee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/readex_pro_regular"
+            android:gravity="center_horizontal"
+            android:text="@string/unlock_feature_subtitle"
+            android:textColor="#0F1E47"
+            android:textSize="@dimen/_11sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/txtFreeTrial"
-            app:thumbTint="@null"
-            app:thumbTintMode="src_over"
-            app:track="@drawable/track"
-            app:trackTint="@null"
-            app:trackTintMode="src_over" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgBackGround" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llFreeTrial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_radius_12_border_1"
+            android:padding="@dimen/_12sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginVertical="@dimen/_12sdp"
+            app:layout_constraintTop_toBottomOf="@id/txtFee">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtFreeTrial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/free_trial_enabled"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="#0F1E47"
+                android:fontFamily="@font/readex_pro_regular"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_12sdp"
+                android:checked="true"
+                android:clickable="false"
+                android:thumb="@drawable/thumb"
+                app:layout_constraintBottom_toBottomOf="@id/txtFreeTrial"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/txtFreeTrial"
+                app:thumbTint="@null"
+                app:thumbTintMode="src_over"
+                app:track="@drawable/track"
+                app:trackTint="@null"
+                app:trackTintMode="src_over" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnTry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            android:background="@drawable/bg_radius_12"
+            android:backgroundTint="#0F1E47"
+            android:text="@string/btn_try"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:fontFamily="@font/readex_pro_bold"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@id/llFreeTrial"/>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:elevation="8dp"
+            android:indeterminateTint="#66FFFFFF"
+            app:layout_constraintBottom_toBottomOf="@id/btnTry"
+            app:layout_constraintEnd_toEndOf="@id/btnTry"
+            app:layout_constraintStart_toStartOf="@id/btnTry"
+            app:layout_constraintTop_toTopOf="@id/btnTry" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/policy2"
+            android:textSize="@dimen/_8sdp"
+            android:textColor="#4D5A68"
+            android:fontFamily="@font/readex_pro_regular"
+            android:gravity="center_horizontal"
+            android:layout_margin="@dimen/_15sdp"
+            android:paddingVertical="@dimen/_6sdp"
+            android:paddingHorizontal="@dimen/_15sdp"
+            app:layout_constraintTop_toBottomOf="@id/btnTry"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnTry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/_12sdp"
-        android:background="@drawable/bg_radius_12"
-        android:backgroundTint="#0F1E47"
-        android:text="@string/btn_try"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp"
-        android:fontFamily="@font/readex_pro_bold"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@id/llFreeTrial"/>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="@dimen/_18sdp"
-        android:layout_height="@dimen/_18sdp"
-        android:elevation="8dp"
-        android:indeterminateTint="#66FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@id/btnTry"
-        app:layout_constraintEnd_toEndOf="@id/btnTry"
-        app:layout_constraintStart_toStartOf="@id/btnTry"
-        app:layout_constraintTop_toTopOf="@id/btnTry" />
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/policy2"
-        android:textSize="@dimen/_8sdp"
-        android:textColor="#4D5A68"
-        android:fontFamily="@font/readex_pro_regular"
-        android:gravity="center_horizontal"
-        android:layout_margin="@dimen/_15sdp"
-        android:paddingVertical="@dimen/_6sdp"
-        android:paddingHorizontal="@dimen/_15sdp"
-        app:layout_constraintTop_toBottomOf="@id/btnTry"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
