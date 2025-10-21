@@ -40,7 +40,7 @@
     <string name="btn_try">Try for free</string>
     <string name="policy2">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy</b></u> policies\nSubscription gives you access to V9Compress\'s premium features, all ads will be removed.\nSubscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\nYou will not be charged if subscription is canceled before trial period ends.\nSubscription is not required to use V9Compress</string>
 
-    <string name="pw_bottom_sheet_title">SMARTER STORAGE MADE\nAFFORDABLE</string>
+    <string name="pw_bottom_sheet_title">SMARTER STORAGE MADE AFFORDABLE</string>
     <string name="save_92">Saved 92%</string>
     <string name="price_per_week">Only $0.412 per week</string>
     <string name="yearly_plan">Yearly Plan</string>
@@ -50,4 +50,10 @@
     <string name="per_year">/year</string>
     <string name="introduce_fee">$19.99/year after free trial ends.\nAuto renew, cancel anytime</string>
     <string name="free_trial_title">3-day free trial enabled</string>
+
+    <string name="yearly">Yearly</string>
+    <string name="weekly">Weekly</string>
+    <string name="pw_onboarding_title">Shrink size keep quality</string>
+    <string name="free_trial_enabled">Free trial enabled</string>
+
 </resources>

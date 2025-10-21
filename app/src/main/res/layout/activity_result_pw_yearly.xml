@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#33000000"
     android:paddingHorizontal="@dimen/_13sdp">
 
@@ -10,10 +10,10 @@
         android:id="@+id/btnClose"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
-        android:background="@drawable/btn_dialog"
         android:layout_marginTop="@dimen/_42sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:background="@drawable/btn_dialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/bgView"
@@ -21,79 +21,123 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_85sdp"
         android:background="@drawable/bg_dlg_sale_yearly_30"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgLogoPro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_42sdp"
         android:background="@drawable/ic_logo"
-        app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintEnd_toEndOf="@id/bgView"
-        app:layout_constraintTop_toTopOf="@id/bgView"
-        android:layout_marginTop="@dimen/_42sdp"/>
+        app:layout_constraintStart_toStartOf="@id/bgView"
+        app:layout_constraintTop_toTopOf="@id/bgView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtDialogTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:fontFamily="@font/funnelsans_bold"
+        android:paddingVertical="@dimen/_4sdp"
         android:text="@string/dialog_sale_title"
         android:textColor="@color/super_light"
         android:textSize="@dimen/_15sdp"
-        android:fontFamily="@font/funnelsans_bold"
-        android:paddingVertical="@dimen/_4sdp"
-        app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintEnd_toEndOf="@id/bgView"
-        app:layout_constraintTop_toBottomOf="@id/imgLogoPro"
-        android:layout_marginTop="@dimen/_9sdp"/>
+        app:layout_constraintStart_toStartOf="@id/bgView"
+        app:layout_constraintTop_toBottomOf="@id/imgLogoPro" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img30Percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_136sdp"
         android:background="@drawable/bg_30_percent_off_center"
-        app:layout_constraintStart_toStartOf="@id/bgView"
         app:layout_constraintEnd_toEndOf="@id/bgView"
-        app:layout_constraintTop_toTopOf="@id/bgView"
-        android:layout_marginTop="@dimen/_136sdp" />
+        app:layout_constraintStart_toStartOf="@id/bgView"
+        app:layout_constraintTop_toTopOf="@id/bgView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtTry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:background="@drawable/bg_try_dlg_yearly"
+        android:fontFamily="@font/funnel_sans_semibold"
+        android:gravity="center"
         android:text="@string/try_yearly"
         android:textColor="@color/super_light"
         android:textSize="@dimen/_11sdp"
-        android:fontFamily="@font/funnel_sans_semibold"
-        android:gravity="center"
-        android:background="@drawable/bg_try_dlg_yearly"
-        android:layout_marginTop="@dimen/_4sdp"
-        app:layout_constraintTop_toBottomOf="@id/bgView"/>
+        app:layout_constraintTop_toBottomOf="@id/bgView" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnClaimOffer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_9sdp"
         android:background="@drawable/bg_radius_8_yearly"
         android:fontFamily="@font/funnelsans_extrabold"
         android:paddingVertical="@dimen/_9sdp"
         android:text="@string/btn_claim_offer"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/txtTry" />
 
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="@dimen/_18sdp"
+        android:layout_height="@dimen/_18sdp"
+        android:elevation="8dp"
+        android:indeterminateTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/btnClaimOffer"
+        app:layout_constraintEnd_toEndOf="@id/btnClaimOffer"
+        app:layout_constraintStart_toStartOf="@id/btnClaimOffer"
+        app:layout_constraintTop_toTopOf="@id/btnClaimOffer" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/txtPolicy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bgView">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/funnel_sans_semibold"
+            android:text="@string/load_error"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:fontFamily="@font/funnelsans_regular"
+            android:text="@string/try_again"
+            android:textColor="#CCFFF8F8"
+            android:textSize="@dimen/_11sdp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/policy"
-        android:textSize="@dimen/_8sdp"
-        android:textColor="@color/super_light"
-        android:fontFamily="@font/funnelsans_regular"
-        android:paddingVertical="@dimen/_6sdp"
-        android:paddingHorizontal="@dimen/_15sdp"
-        android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/_9sdp"
-        app:layout_constraintTop_toBottomOf="@id/btnClaimOffer"/>
+        android:fontFamily="@font/funnelsans_regular"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="@dimen/_15sdp"
+        android:paddingVertical="@dimen/_6sdp"
+        android:text="@string/policy"
+        android:textColor="@color/super_light"
+        android:textSize="@dimen/_8sdp"
+        app:layout_constraintTop_toBottomOf="@id/btnClaimOffer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

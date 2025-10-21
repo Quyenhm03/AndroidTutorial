@@ -20,7 +20,7 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".layout.PaywallActivity"
+            android:name=".layout.Paywall1Activity"
             android:exported="true">
 
             <intent-filter>
