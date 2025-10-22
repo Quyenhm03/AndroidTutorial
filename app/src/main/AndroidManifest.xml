@@ -20,6 +20,12 @@
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".layout.Paywall7Activity"
+            android:exported="false" />
+        <activity
+            android:name=".layout.Paywall6Activity"
+            android:exported="false" />
+        <activity
             android:name=".layout.Paywall4Activity"
             android:exported="false" />
         <activity

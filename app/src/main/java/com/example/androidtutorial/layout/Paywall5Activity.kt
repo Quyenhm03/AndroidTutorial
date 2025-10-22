@@ -4,12 +4,16 @@ import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.androidtutorial.R
 import com.example.androidtutorial.databinding.ActivityResultPwYearlyBinding
 import com.example.androidtutorial.databinding.ActivityUnlockFeatureBinding
 
 class Paywall5Activity : AppCompatActivity() {
+
     private lateinit var binding: ActivityUnlockFeatureBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,14 +21,17 @@ class Paywall5Activity : AppCompatActivity() {
         binding = ActivityUnlockFeatureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val extras = intent.extras
-        val state = extras?.getInt("state", 0) ?: 0
+        stateIsLoading()
+        Handler(Looper.getMainLooper()).postDelayed({
+            val extras = intent.extras
+            val state = extras?.getInt("state", 0) ?: 0
 
-        when(state) {
-            0 -> stateIsLoading()
-            1 -> stateLoaded()
-            2 -> stateNotEnoughTrial()
-        }
+            if (state == 0) {
+                stateNormal()
+            } else {
+                stateNotEligible()
+            }
+        }, 2000)
     }
 
     @SuppressLint("SetTextI18n")
@@ -38,17 +45,26 @@ class Paywall5Activity : AppCompatActivity() {
         }
     }
 
-    private fun stateLoaded() {
+    private fun stateNormal() {
         binding.apply {
-            progress.visibility = View.INVISIBLE
+            btnTry.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#0E111B"))
+            btnTry.text = getString(R.string.btn_try)
             btnTry.isEnabled = true
+
+            txtSubTitle.visibility = View.VISIBLE
+            txtSubTitle.text = getString(R.string.free_trial, "$14.99/year")
+            progress.visibility = View.INVISIBLE
         }
     }
 
-    private fun stateNotEnoughTrial() {
+    private fun stateNotEligible() {
         binding.apply {
-            btnTry.text = "Continue"
-            txtSubTitle.text = "$14.99/year\nAuto renew, cancel anytime"
+            btnTry.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#0E111B"))
+            btnTry.text = getString(R.string.btn_continue)
+            btnTry.isEnabled = true
+
+            txtSubTitle.visibility = View.VISIBLE
+            txtSubTitle.text = getString(R.string.not_free_trial, "$14.99/year")
             progress.visibility = View.INVISIBLE
         }
     }

@@ -55,5 +55,10 @@
     <string name="weekly">Weekly</string>
     <string name="pw_onboarding_title">Shrink size keep quality</string>
     <string name="free_trial_enabled">Free trial enabled</string>
-
+    <string name="btn_continue">Continue</string>
+    <string name="free_trial">%s after free trial ends.\nAuto renew, cancel anytime</string>
+    <string name="not_free_trial">%s\nAuto renew, cancel anytime</string>
+    <string name="enable_free_trial">Enable free trial?</string>
+    <string name="auto_renew">Auto renew at %s</string>
+    <string name="cancel_anytime">Cancel anytime</string>
 </resources>

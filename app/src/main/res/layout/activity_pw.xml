@@ -20,24 +20,15 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="30dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW1Loading"
+            android:id="@+id/btnPW1Success"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW1 Loading"
-            android:textAllCaps="false"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW1Loaded"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="PW1 Loaded"
+            android:text="PW1 Loading Success"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -45,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="PW1 Error"
+            android:text="PW1 Loading Error"
             android:textAllCaps="false"/>
     </LinearLayout>
 
@@ -56,21 +47,12 @@
         android:layout_marginTop="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW2Loading"
+            android:id="@+id/btnPW2Success"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW2 Loading"
-            android:textAllCaps="false"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW2Loaded"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="PW2 Loaded"
+            android:text="PW2 Loading Success"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -78,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="PW2 Error"
+            android:text="PW2 Loading Error"
             android:textAllCaps="false"/>
     </LinearLayout>
 
@@ -89,21 +71,12 @@
         android:layout_marginTop="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW3Loading"
+            android:id="@+id/btnPW3Success"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW3 Loading"
-            android:textAllCaps="false"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW3Loaded"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="PW3 Loaded"
+            android:text="PW3 Loading Success"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -111,7 +84,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="PW3 Error"
+            android:text="PW3 Loading Error"
             android:textAllCaps="false"/>
     </LinearLayout>
 
@@ -122,29 +95,20 @@
         android:layout_marginTop="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW4Loading"
+            android:id="@+id/btnPW4Normal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW4 Loading"
+            android:text="PW4 Normal"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW4Loaded"
+            android:id="@+id/btnPW4NotEligible"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:text="PW4 Loaded"
-            android:textAllCaps="false"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW4NotTrial"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="PW4 Not Trial"
+            android:text="PW4 Not Enough Trial"
             android:textAllCaps="false"/>
     </LinearLayout>
 
@@ -155,29 +119,68 @@
         android:layout_marginTop="20dp">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW5Loading"
+            android:id="@+id/btnPW5Normal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW5 Loading"
+            android:text="PW5 Normal"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW5Loaded"
+            android:id="@+id/btnPW5NotEligible"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="PW5 Not Enough Trial"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPW6Normal"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:text="PW5 Loaded"
+            android:text="PW6 Normal"
             android:textAllCaps="false"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnPW5NotTrial"
+            android:id="@+id/btnPW6NotEligible"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="PW5 Not Trial"
+            android:text="PW6 Not Enough Trial"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPW7Normal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:text="PW7 Normal"
+            android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPW7NotEligible"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="PW7 Not Enough Trial"
             android:textAllCaps="false"/>
     </LinearLayout>
 

@@ -31,7 +31,7 @@
             android:layout_width="@dimen/_16sdp"
             android:layout_height="@dimen/_16sdp"
             android:layout_marginStart="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_38sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/btn_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/funnelsans_regular"
             android:text="@string/price_per_week_strike"
-            android:textColor="@color/super_light"
+            android:textColor="#9799A6"
             android:textSize="@dimen/_15sdp"
             app:layout_constraintBottom_toBottomOf="@id/txtOff"
             app:layout_constraintEnd_toStartOf="@id/txtOff"
@@ -189,6 +189,7 @@
                 android:textSize="@dimen/_12sdp" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnTryAgain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_3sdp"
@@ -216,7 +217,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="visible"
-            app:constraint_referenced_ids="txtPriceStroke,txtOff,txtPrice,txtPerWeek, txtContent" />
+            app:constraint_referenced_ids="txtPriceStroke,txtOff,txtPrice,txtPerWeek,txtContent" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/groupLoading"

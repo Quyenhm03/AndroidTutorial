@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -17,9 +18,12 @@
         app:behavior_peekHeight="@dimen/_390sdp"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/_12sdp"
-            android:layout_height="@dimen/_12sdp"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="@dimen/_6sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_3sdp"
             android:background="@drawable/ic_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -97,6 +101,7 @@
                 app:layout_constraintTop_toBottomOf="@id/txtYearlyPlan" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llYearlyFee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_9sdp"
@@ -122,6 +127,16 @@
                     android:textSize="@dimen/_9sdp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ProgressBar
+                android:id="@+id/progress1"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:elevation="8dp"
+                android:indeterminateTint="#0F1E47"
+                app:layout_constraintBottom_toBottomOf="@id/llYearlyFee"
+                app:layout_constraintEnd_toEndOf="@id/llYearlyFee"
+                app:layout_constraintTop_toTopOf="@id/llYearlyFee" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,6 +164,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llWeeklyFee"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -173,6 +189,16 @@
                     android:textSize="@dimen/_9sdp" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <ProgressBar
+                android:id="@+id/progress2"
+                android:layout_width="@dimen/_18sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:elevation="8dp"
+                android:indeterminateTint="#0F1E47"
+                app:layout_constraintBottom_toBottomOf="@id/llWeeklyFee"
+                app:layout_constraintEnd_toEndOf="@id/llWeeklyFee"
+                app:layout_constraintTop_toTopOf="@id/llWeeklyFee" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -249,6 +275,22 @@
             android:textColor="#4D5A68"
             android:textSize="@dimen/_8sdp"
             app:layout_constraintTop_toBottomOf="@id/icSecurity" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="txtIntroduceFee,txt3DayTrial,icSecurity"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/groupProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:constraint_referenced_ids="progress,progress1,progress2"
+            tools:ignore="NotSibling" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

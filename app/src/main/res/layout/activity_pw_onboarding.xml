@@ -11,14 +11,14 @@
         android:background="#F0F7FF">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="@dimen/_12sdp"
-            android:layout_height="@dimen/_12sdp"
+            android:id="@+id/btnClose"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="@dimen/_6sdp"
             android:background="@drawable/ic_cancel"
-            android:layout_marginTop="@dimen/_22sdp"
+            android:layout_marginTop="@dimen/_25sdp"
             android:layout_marginEnd="@dimen/_26sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
-
 
         <RadioGroup
             android:id="@+id/toggleGroup"
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_12sdp"
                 android:checked="true"
-                android:clickable="false"
+                android:clickable="true"
                 android:thumb="@drawable/thumb"
                 app:layout_constraintBottom_toBottomOf="@id/txtFreeTrial"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -59,6 +59,7 @@
         app:layout_constraintTop_toBottomOf="@id/txtDialogTitle" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtTry"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_45sdp"
@@ -123,6 +124,7 @@
             android:textSize="@dimen/_12sdp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnTryAgain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
