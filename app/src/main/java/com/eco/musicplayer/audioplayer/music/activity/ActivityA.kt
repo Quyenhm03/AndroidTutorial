@@ -1,4 +1,4 @@
-package com.example.androidtutorial.activity
+package com.eco.musicplayer.audioplayer.music.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,8 +12,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.databinding.ActivityABinding
-import com.example.androidtutorial.permission.Permission
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityABinding
+import com.eco.musicplayer.audioplayer.music.permission.Permission
 
 class ActivityA : AppCompatActivity() {
     private val TAG = "ActivityA"

@@ -1,10 +1,10 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.databinding.ActivityPwBinding
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwBinding
 
 class PayWallActivity : AppCompatActivity() {
 
@@ -16,8 +16,8 @@ class PayWallActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            btnPW1Success.setOnClickListener{ showPayWall(Paywall1Activity::class.java, 0)}
-            btnPW1Error.setOnClickListener{ showPayWall(Paywall1Activity::class.java, 1)}
+            btnPW1Success.setOnClickListener{ showPayWall(com.eco.musicplayer.audioplayer.music.layout.Paywall1Activity::class.java, 0)}
+            btnPW1Error.setOnClickListener{ showPayWall(com.eco.musicplayer.audioplayer.music.layout.Paywall1Activity::class.java, 1)}
             btnPW2Success.setOnClickListener{ showPayWall(Paywall2Activity::class.java, 0)}
             btnPW2Error.setOnClickListener{ showPayWall(Paywall2Activity::class.java, 1)}
             btnPW3Success.setOnClickListener{ showPayWall(Paywall3Activity::class.java, 0)}

@@ -1,4 +1,4 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,66 +6,81 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityResultPwWeeklyBinding
-import com.example.androidtutorial.databinding.ActivityResultPwYearlyBinding
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwSale50Binding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlin.random.Random
 
-class Paywall3Activity : AppCompatActivity() {
+class Paywall1Activity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityResultPwYearlyBinding // Đổi binding cho layout của Paywall3
+    private lateinit var binding: ActivityPwSale50Binding
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResultPwYearlyBinding.inflate(layoutInflater)
+        binding = ActivityPwSale50Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupBottomSheet()
         binding.btnClose.setOnClickListener { finish() }
+
+        stateIsLoading()
 
         val extras = intent.extras
         val state = extras?.getInt("state", 0) ?: 0
-
-        stateIsLoading()
 
         Handler(Looper.getMainLooper()).postDelayed({
             when (state) {
                 0 -> stateLoaded()
                 1 -> stateError()
-                else -> stateLoaded()
             }
         }, 2000)
+    }
+
+    private fun setupBottomSheet() {
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
+
+        val screenHeight = resources.displayMetrics.heightPixels
+        val peekHeight = (screenHeight * 0.32).toInt()
+
+        bottomSheetBehavior.apply {
+            this.peekHeight = peekHeight
+            isHideable = false
+            isFitToContents = true
+            state = BottomSheetBehavior.STATE_COLLAPSED
+        }
     }
 
     @SuppressLint("SetTextI18n")
     private fun stateIsLoading() {
         binding.apply {
+            groupPrice.visibility = View.INVISIBLE
+            groupError.visibility = View.GONE
+            groupLoading.visibility = View.VISIBLE
             btnClaimOffer.text = ""
             btnClaimOffer.isEnabled = false
-            progress.visibility = View.VISIBLE
-            llError.visibility = View.GONE
             btnClaimOffer.visibility = View.VISIBLE
-            txtTry.visibility = View.GONE
         }
     }
 
     private fun stateLoaded() {
         binding.apply {
-            progress.visibility = View.GONE
+            groupPrice.visibility = View.VISIBLE
+            groupError.visibility = View.GONE
+            groupLoading.visibility = View.GONE
             btnClaimOffer.text = getString(R.string.btn_claim_offer)
             btnClaimOffer.isEnabled = true
             btnClaimOffer.visibility = View.VISIBLE
-            llError.visibility = View.GONE
-            txtTry.visibility = View.VISIBLE
         }
     }
 
     private fun stateError() {
         binding.apply {
-            progress.visibility = View.GONE
+            groupPrice.visibility = View.INVISIBLE
+            groupLoading.visibility = View.GONE
+            groupError.visibility = View.VISIBLE
             btnClaimOffer.visibility = View.INVISIBLE
-            llError.visibility = View.VISIBLE
-            txtTry.visibility = View.GONE
-
             btnTryAgain.setOnClickListener {
                 stateIsLoading()
                 simulateAfterTryAgain()

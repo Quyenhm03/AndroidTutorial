@@ -1,4 +1,4 @@
-package com.example.androidtutorial
+package com.eco.music
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

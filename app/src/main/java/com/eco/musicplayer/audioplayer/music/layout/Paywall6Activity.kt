@@ -1,4 +1,4 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -8,27 +8,25 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityPwFullScreenBinding
-import com.example.androidtutorial.databinding.ActivityUnlockFeatureBinding
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class Paywall7Activity : AppCompatActivity() {
+class Paywall6Activity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPwFullScreenBinding
+    private lateinit var binding: ActivityPwBottomSheetBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var currentPlan = "YEARLY"
     private var isTrialEligible = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPwFullScreenBinding.inflate(layoutInflater)
+        binding = ActivityPwBottomSheetBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnClose.setOnClickListener { finish() }
 
         setupBottomSheet()
-
         stateIsLoading()
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -48,7 +46,7 @@ class Paywall7Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val peekHeight = (screenHeight * 0.65).toInt()
+        val peekHeight = (screenHeight * 0.62).toInt()
 
         bottomSheetBehavior.apply {
             this.peekHeight = peekHeight

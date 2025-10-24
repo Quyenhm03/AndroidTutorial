@@ -1,10 +1,10 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityItineraryBinding
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityItineraryBinding
 
 class ItineraryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityItineraryBinding

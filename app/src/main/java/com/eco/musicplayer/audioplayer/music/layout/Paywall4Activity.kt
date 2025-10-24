@@ -1,4 +1,4 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -7,8 +7,8 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityPwOnboardingBinding
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwOnboardingBinding
 
 class Paywall4Activity : AppCompatActivity() {
 

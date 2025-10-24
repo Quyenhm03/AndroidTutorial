@@ -1,4 +1,4 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -6,30 +6,28 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityPwBottomSheetBinding
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwFullScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class Paywall6Activity : AppCompatActivity() {
+class Paywall7Activity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPwBottomSheetBinding
+    private lateinit var binding: ActivityPwFullScreenBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private var currentPlan = "YEARLY"
     private var isTrialEligible = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPwBottomSheetBinding.inflate(layoutInflater)
+        binding = ActivityPwFullScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnClose.setOnClickListener { finish() }
 
         setupBottomSheet()
+
         stateIsLoading()
 
         Handler(Looper.getMainLooper()).postDelayed({
@@ -49,7 +47,7 @@ class Paywall6Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val peekHeight = (screenHeight * 0.62).toInt()
+        val peekHeight = (screenHeight * 0.65).toInt()
 
         bottomSheetBehavior.apply {
             this.peekHeight = peekHeight

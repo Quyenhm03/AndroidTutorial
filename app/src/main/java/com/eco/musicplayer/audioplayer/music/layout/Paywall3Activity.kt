@@ -1,4 +1,4 @@
-package com.example.androidtutorial.layout
+package com.eco.musicplayer.audioplayer.music.layout
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,17 +6,17 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.R
-import com.example.androidtutorial.databinding.ActivityResultPwWeeklyBinding
+import com.eco.musicplayer.audioplayer.music.R
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityResultPwYearlyBinding
 import kotlin.random.Random
 
-class Paywall2Activity : AppCompatActivity() {
+class Paywall3Activity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityResultPwWeeklyBinding
+    private lateinit var binding: ActivityResultPwYearlyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResultPwWeeklyBinding.inflate(layoutInflater)
+        binding = ActivityResultPwYearlyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnClose.setOnClickListener { finish() }
@@ -42,8 +42,8 @@ class Paywall2Activity : AppCompatActivity() {
             btnClaimOffer.isEnabled = false
             progress.visibility = View.VISIBLE
             llError.visibility = View.GONE
-            txtTry.visibility = View.GONE
             btnClaimOffer.visibility = View.VISIBLE
+            txtTry.visibility = View.GONE
         }
     }
 
@@ -53,8 +53,8 @@ class Paywall2Activity : AppCompatActivity() {
             btnClaimOffer.text = getString(R.string.btn_claim_offer)
             btnClaimOffer.isEnabled = true
             btnClaimOffer.visibility = View.VISIBLE
-            txtTry.visibility = View.VISIBLE
             llError.visibility = View.GONE
+            txtTry.visibility = View.VISIBLE
         }
     }
 

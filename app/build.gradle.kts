@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.androidtutorial"
+    namespace = "com.eco.musicplayer.audioplayer.music"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.androidtutorial_quyennt"
+        applicationId = "com.eco.musicplayer.audioplayer.music"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -51,4 +51,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.airbnb.android:lottie:6.4.0")
     implementation("com.intuit.sdp:sdp-android:1.1.1")
+    implementation("com.android.billingclient:billing-ktx:7.1.1")
 }

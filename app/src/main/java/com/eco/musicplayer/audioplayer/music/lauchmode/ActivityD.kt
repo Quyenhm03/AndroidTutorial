@@ -1,31 +1,34 @@
-package com.example.androidtutorial.lauchmode
+package com.eco.musicplayer.audioplayer.music.lauchmode
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.databinding.ActivityCBinding
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityDBinding
 
-class ActivityC : AppCompatActivity() {
-    private val TAG = "ActivityC"
+class ActivityD : AppCompatActivity() {
+    private val TAG = "ActivityD"
 
     companion object {
         private var totalInstanceCount = 0
     }
 
-    private lateinit var binding: ActivityCBinding
+    private lateinit var binding: ActivityDBinding
 
     private var instanceCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCBinding.inflate(layoutInflater)
+        binding = ActivityDBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         totalInstanceCount++
         instanceCount = totalInstanceCount
         updateInfo()
 
+        binding.btnToC.setOnClickListener {
+            startActivity(Intent(this, ActivityC::class.java))
+        }
         binding.btnToD.setOnClickListener {
             startActivity(Intent(this, ActivityD::class.java))
         }
@@ -34,13 +37,18 @@ class ActivityC : AppCompatActivity() {
         }
     }
 
-
     fun updateInfo() {
-        binding.txtInfo.text = "ActivityC\nInstance Count: $instanceCount\nTaskID: $taskId"
+        binding.txtInfo.text = "ActivityD\nInstance Count: $instanceCount\nTaskID: $taskId"
     }
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         Log.d(TAG, "onNewIntent called")
+        updateInfo()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        totalInstanceCount--
     }
 }

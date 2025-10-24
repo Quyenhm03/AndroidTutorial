@@ -1,11 +1,11 @@
-package com.example.androidtutorial.activity
+package com.eco.musicplayer.audioplayer.music.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtutorial.databinding.ActivityBBinding
+import com.eco.musicplayer.audioplayer.music.databinding.ActivityBBinding
 
 class ActivityB : AppCompatActivity() {
     private val TAG = "ActivityB"

@@ -1,4 +1,4 @@
-package com.example.androidtutorial.permission
+package com.eco.musicplayer.audioplayer.music.permission
 
 import android.Manifest
 import android.app.Activity
