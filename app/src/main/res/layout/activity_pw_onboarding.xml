@@ -34,11 +34,11 @@
             android:layout_marginTop="@dimen/_15sdp">
 
             <RadioButton
-                android:id="@+id/btnYearly"
+                android:id="@+id/btnWeekly"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/yearly"
+                android:text="@string/weekly"
                 android:textColor="@color/toggle_text_color"
                 android:textSize="@dimen/_11sdp"
                 android:fontFamily="@font/readex_pro_regular"
@@ -48,11 +48,11 @@
                 android:checked="true"/>
 
             <RadioButton
-                android:id="@+id/btnWeekly"
+                android:id="@+id/btnLifetime"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="@string/weekly"
+                android:text="@string/lifetime"
                 android:textColor="@color/toggle_text_color"
                 android:textSize="@dimen/_11sdp"
                 android:fontFamily="@font/readex_pro_regular"
@@ -120,7 +120,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/swToggle"
+                android:id="@+id/swTrial"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_12sdp"
                 android:checked="true"

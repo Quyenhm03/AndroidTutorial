@@ -53,12 +53,19 @@
 
     <string name="yearly">Yearly</string>
     <string name="weekly">Weekly</string>
+    <string name="lifetime">Lifetime</string>
     <string name="pw_onboarding_title">Shrink size keep quality</string>
     <string name="free_trial_enabled">Free trial enabled</string>
     <string name="btn_continue">Continue</string>
+    <string name="enable_free_trial">Enable free trial?</string>
     <string name="free_trial">%s after free trial ends.\nAuto renew, cancel anytime</string>
     <string name="not_free_trial">%s\nAuto renew, cancel anytime</string>
-    <string name="enable_free_trial">Enable free trial?</string>
     <string name="auto_renew">Auto renew at %s</string>
     <string name="cancel_anytime">Cancel anytime</string>
+    <string name="offer_detail_placeholder">Select a plan to see details</string>
+    <string name="btn_buy">Buy Now</string>
+    <string name="fee_trial">%s after free %s trial ends.\nAuto renew, cancel anytime</string>
+    <string name="fee_not_trial">%s\nAuto renew, cancel anytime</string>
+    <string name="fee_onetime_purchase">One-time purchase for lifetime\naccess with %s</string>
+    <string name="error_loading_price">Error loading price</string>
 </resources>
