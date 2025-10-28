@@ -4,61 +4,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#33000000"
-    android:fillViewport="true"
-    android:paddingHorizontal="@dimen/_15sdp">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_15sdp"
+        android:paddingHorizontal="@dimen/_15sdp">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClose"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/btn_dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/bgView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/_48sdp"
             android:background="@drawable/bg_dlg_sale_weekly_30"
-            app:layout_constraintTop_toBottomOf="@id/btnClose" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnClose"
+            app:layout_constraintDimensionRatio="H,1:1.1" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgLogoPro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_36sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@drawable/ic_logo_pro"
+            app:layout_constraintDimensionRatio="H,6:1"
+            app:layout_constraintWidth_percent="0.72"
             app:layout_constraintEnd_toEndOf="@id/bgView"
-            app:layout_constraintTop_toTopOf="@id/bgView" />
+            app:layout_constraintTop_toTopOf="@id/bgView"
+            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginEnd="@dimen/_10sdp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtDialogTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_4sdp"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/funnelsans_bold"
             android:text="@string/dialog_sale_title"
             android:textColor="@color/super_light"
             android:textSize="@dimen/_12sdp"
+            android:gravity="end"
             app:layout_constraintEnd_toEndOf="@id/bgView"
-            app:layout_constraintTop_toBottomOf="@id/imgLogoPro" />
+            app:layout_constraintTop_toBottomOf="@id/imgLogoPro"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img30Percent"
             android:layout_width="0dp"
-            android:layout_height="@dimen/_130sdp"
-            android:layout_marginStart="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_9sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/bg_30_percent_off_right"
+            app:layout_constraintDimensionRatio="H,1:0.6"
             app:layout_constraintEnd_toEndOf="@id/bgView"
             app:layout_constraintStart_toStartOf="@id/bgView"
             app:layout_constraintTop_toBottomOf="@id/txtDialogTitle" />
@@ -67,9 +75,7 @@
             android:id="@+id/txtTry"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_45sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/bg_radius_4"
             android:backgroundTint="#7308080E"
             android:fontFamily="@font/funnel_sans_semibold"
@@ -80,20 +86,24 @@
             android:textColor="@color/super_light"
             android:textSize="@dimen/_11sdp"
             app:layout_constraintEnd_toEndOf="@id/bgView"
-            app:layout_constraintStart_toStartOf="@id/bgView"
-            app:layout_constraintTop_toBottomOf="@id/img30Percent" />
+            app:layout_constraintStart_toStartOf="@id/img30Percent"
+            app:layout_constraintTop_toBottomOf="@id/img30Percent"
+            android:layout_marginTop="@dimen/_12sdp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClaimOffer"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
             android:background="@drawable/bg_radius_8_weekly"
             android:fontFamily="@font/funnelsans_extrabold"
+            android:minHeight="@dimen/_40sdp"
             android:paddingVertical="@dimen/_9sdp"
             android:text="@string/btn_claim_offer"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="@id/bgView"
+            app:layout_constraintEnd_toEndOf="@id/bgView"
             app:layout_constraintTop_toBottomOf="@id/bgView" />
 
         <ProgressBar
@@ -109,16 +119,16 @@
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/llError"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_8sdp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@id/txtPolicy"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bgView">
+            app:layout_constraintEnd_toEndOf="@id/bgView"
+            app:layout_constraintStart_toStartOf="@id/bgView"
+            app:layout_constraintTop_toBottomOf="@id/bgView"
+            app:layout_constraintBottom_toTopOf="@id/txtPolicy">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -137,11 +147,12 @@
                 android:text="@string/try_again"
                 android:textColor="#CCFFF8F8"
                 android:textSize="@dimen/_11sdp" />
+
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtPolicy"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_9sdp"
             android:fontFamily="@font/funnelsans_regular"
@@ -151,7 +162,10 @@
             android:text="@string/policy"
             android:textColor="@color/super_light"
             android:textSize="@dimen/_8sdp"
-            app:layout_constraintTop_toBottomOf="@id/btnClaimOffer" />
+            app:layout_constraintStart_toStartOf="@id/bgView"
+            app:layout_constraintEnd_toEndOf="@id/bgView"
+            app:layout_constraintTop_toBottomOf="@id/btnClaimOffer"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

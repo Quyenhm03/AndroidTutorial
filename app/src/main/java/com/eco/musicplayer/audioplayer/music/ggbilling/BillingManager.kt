@@ -121,7 +121,8 @@ class BillingManager(
 
     fun launchPurchaseFlow(activity: Activity, productDetails: ProductDetails, offerId: String = "") {
         val offerToken = if (offerId.isNotEmpty()) {
-            productDetails.subscriptionOfferDetails?.find { it.offerId == offerId || it.offerTags.contains(offerId) }?.offerToken ?: ""
+            productDetails.subscriptionOfferDetails?.find {
+                it.offerId == offerId || it.offerTags.contains(offerId) }?.offerToken ?: ""
         } else {
             ""
         }

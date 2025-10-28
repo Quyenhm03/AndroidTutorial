@@ -54,7 +54,7 @@
     <string name="yearly">Yearly</string>
     <string name="weekly">Weekly</string>
     <string name="lifetime">Lifetime</string>
-    <string name="pw_onboarding_title">Shrink size keep quality</string>
+    <string name="pw_onboarding_title">Shrink size\nkeep quality</string>
     <string name="free_trial_enabled">Free trial enabled</string>
     <string name="btn_continue">Continue</string>
     <string name="enable_free_trial">Enable free trial?</string>

@@ -25,9 +25,10 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgBackGround"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/_9sdp"
             android:background="@drawable/bg_unlock_feature"
+            app:layout_constraintDimensionRatio="H,1:0.93"
             app:layout_constraintTop_toBottomOf="@id/txtTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -79,4 +80,5 @@
             app:layout_constraintTop_toBottomOf="@id/btnTry" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

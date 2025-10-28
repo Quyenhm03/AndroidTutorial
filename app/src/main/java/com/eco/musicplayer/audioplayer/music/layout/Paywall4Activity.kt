@@ -156,7 +156,6 @@ class Paywall4Activity : AppCompatActivity() {
             btnTry.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#0F1E47"))
             progress.visibility = View.GONE
             btnTry.isEnabled = true
-            llFreeTrial.visibility = View.GONE
             txtFee.visibility = View.VISIBLE
 
             val initialPlan = getSelectedPlan()
@@ -201,7 +200,7 @@ class Paywall4Activity : AppCompatActivity() {
 
         binding.apply {
             val isTrial = swTrial.isChecked && plan != PLAN_LIFETIME && binding.llFreeTrial.visibility == View.VISIBLE
-            llFreeTrial.visibility = if (plan == PLAN_LIFETIME) View.GONE else View.VISIBLE
+            llFreeTrial.visibility = if (plan == PLAN_LIFETIME || !isEligible ) View.GONE else View.VISIBLE
             swTrial.isEnabled = plan != PLAN_LIFETIME
 
             when (plan) {
@@ -216,7 +215,7 @@ class Paywall4Activity : AppCompatActivity() {
                             txtFee.text = getString(R.string.fee_not_trial, price)
                         }
                     } ?: run { txtFee.text = getString(R.string.error_loading_price) }
-                    btnTry.text = if (isTrial) getString(R.string.btn_try) else getString(R.string.btn_continue)
+                    btnTry.text = if (isTrial && isEligible) getString(R.string.btn_try) else getString(R.string.btn_continue)
                 }
                 PLAN_LIFETIME -> {
                     productDetailsLifetime?.let { details ->

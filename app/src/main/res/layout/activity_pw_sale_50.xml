@@ -48,7 +48,7 @@
         android:paddingBottom="@dimen/_20sdp"
         app:behavior_fitToContents="true"
         app:behavior_hideable="false"
-        app:layout_constraintHeight_percent="0.405"
+        app:layout_constraintHeight_percent="0.4"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <androidx.appcompat.widget.AppCompatTextView

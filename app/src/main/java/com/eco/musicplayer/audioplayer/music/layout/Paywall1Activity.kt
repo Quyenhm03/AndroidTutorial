@@ -42,7 +42,7 @@ class Paywall1Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val peekHeight = (screenHeight * 0.405).toInt()
+        val peekHeight = (screenHeight * 0.4).toInt()
 
         bottomSheetBehavior.apply {
             this.peekHeight = peekHeight

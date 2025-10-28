@@ -47,13 +47,27 @@ class Paywall7Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val peekHeight = (screenHeight * 0.65).toInt()
+        val minHeight = (screenHeight * 0.68).toInt()
 
         bottomSheetBehavior.apply {
-            this.peekHeight = peekHeight
-            isHideable = false
             isFitToContents = true
+            isHideable = false
             state = BottomSheetBehavior.STATE_COLLAPSED
+        }
+
+        binding.adLayout.post {
+            val contentHeight = binding.adLayout.height
+
+            if (contentHeight < minHeight) {
+                val params = binding.adLayout.layoutParams
+                params.height = minHeight
+                binding.adLayout.layoutParams = params
+
+                bottomSheetBehavior.isDraggable = false
+            } else {
+                bottomSheetBehavior.peekHeight = minHeight
+                bottomSheetBehavior.isDraggable = true
+            }
         }
     }
 
