@@ -26,7 +26,7 @@
     <string name="per_week">/week</string>
     <string name="btn_claim_offer">CLAIM OFFER</string>
     <string name="content_pw">$3.99 for first week then $8.99 next week.\nBilled weekly, cancel anytime.</string>
-    <string name="policy">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy</b></u> policies\n\u2022 Subscription gives you access to V9Compress\'s premium features, all ads will be removed.\n\u2022 Subscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\n\u2022 You will not be charged if subscription is canceled before trial period ends.\n\u2022 Subscription is not required to use V9Compress</string>
+    <string name="policy">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy policies</b></u>\n\u2022 Subscription gives you access to V9Compress\'s premium features, all ads will be removed.\n\u2022 Subscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\n\u2022 You will not be charged if subscription is canceled before trial period ends.\n\u2022 Subscription is not required to use V9Compress</string>
     <string name="load_error">We couldn’t load the infomation</string>
     <string name="try_again"><u>Try again</u></string>
 
@@ -38,7 +38,7 @@
     <string name="unlock_feature_title">high-quality\ncompression</string>
     <string name="unlock_feature_subtitle">$14.99/year after free trial ends.\nAuto renew, cancel anytime</string>
     <string name="btn_try">Try for free</string>
-    <string name="policy2">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy</b></u> policies\nSubscription gives you access to V9Compress\'s premium features, all ads will be removed.\nSubscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\nYou will not be charged if subscription is canceled before trial period ends.\nSubscription is not required to use V9Compress</string>
+    <string name="policy2">By continuing you agree to our <u><b>Terms</b></u> and <u><b>Privacy policies</b></u>\nSubscription gives you access to V9Compress\'s premium features, all ads will be removed.\nSubscription plans are automatically renewed and can be canceled anytime in Subscriptions on Google Play.\nYou will not be charged if subscription is canceled before trial period ends.\nSubscription is not required to use V9Compress</string>
 
     <string name="pw_bottom_sheet_title">SMARTER STORAGE MADE AFFORDABLE</string>
     <string name="save_92">Saved 92%</string>
@@ -64,7 +64,7 @@
     <string name="cancel_anytime">Cancel anytime</string>
     <string name="offer_detail_placeholder">Select a plan to see details</string>
     <string name="btn_buy">Buy Now</string>
-    <string name="fee_trial">%s after free %s trial ends.\nAuto renew, cancel anytime</string>
+    <string name="fee_trial">%s after %s ends.\nAuto renew, cancel anytime</string>
     <string name="fee_not_trial">%s\nAuto renew, cancel anytime</string>
     <string name="fee_onetime_purchase">One-time purchase for lifetime\naccess with %s</string>
     <string name="error_loading_price">Error loading price</string>

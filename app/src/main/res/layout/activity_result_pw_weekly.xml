@@ -14,9 +14,9 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClose"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:layout_marginTop="@dimen/_42sdp"
             android:background="@drawable/btn_dialog"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
             android:id="@+id/bgView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_48sdp"
+            android:layout_marginTop="@dimen/_23sdp"
             android:background="@drawable/bg_dlg_sale_weekly_30"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -62,13 +62,12 @@
             android:id="@+id/img30Percent"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/bg_30_percent_off_right"
-            app:layout_constraintDimensionRatio="H,1:0.6"
+            app:layout_constraintWidth_percent="0.76"
+            app:layout_constraintDimensionRatio="H,1:0.67"
             app:layout_constraintEnd_toEndOf="@id/bgView"
-            app:layout_constraintStart_toStartOf="@id/bgView"
             app:layout_constraintTop_toBottomOf="@id/txtDialogTitle" />
 
         <androidx.appcompat.widget.AppCompatTextView

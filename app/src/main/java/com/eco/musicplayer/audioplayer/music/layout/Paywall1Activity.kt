@@ -12,7 +12,7 @@ import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwSale50Binding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlin.random.Random
 
-class Paywall1Activity : AppCompatActivity() {
+class Paywall1Activity : BaseActivity() {
 
     private lateinit var binding: ActivityPwSale50Binding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -21,6 +21,8 @@ class Paywall1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPwSale50Binding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
 
         setupBottomSheet()
         binding.btnClose.setOnClickListener { finish() }
@@ -42,7 +44,7 @@ class Paywall1Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val peekHeight = (screenHeight * 0.4).toInt()
+        val peekHeight = (screenHeight * 0.42).toInt()
 
         bottomSheetBehavior.apply {
             this.peekHeight = peekHeight
@@ -98,4 +100,5 @@ class Paywall1Activity : AppCompatActivity() {
             }
         }, 2000)
     }
+
 }

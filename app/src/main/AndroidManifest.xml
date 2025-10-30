@@ -39,6 +39,7 @@
         <activity
             android:name=".layout.PayWallActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -56,7 +57,9 @@
             android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityC"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".lauchmode.ActivityD"
             android:exported="false"
@@ -69,7 +72,9 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>

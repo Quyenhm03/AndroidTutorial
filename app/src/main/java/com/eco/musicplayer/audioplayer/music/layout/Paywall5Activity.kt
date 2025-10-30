@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityUnlockFeatureBinding
 
-class Paywall5Activity : AppCompatActivity() {
+class Paywall5Activity : BaseActivity() {
 
     private lateinit var binding: ActivityUnlockFeatureBinding
 
@@ -19,6 +19,8 @@ class Paywall5Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUnlockFeatureBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
 
         stateIsLoading()
         Handler(Looper.getMainLooper()).postDelayed({
@@ -31,6 +33,8 @@ class Paywall5Activity : AppCompatActivity() {
                 stateNotEligible()
             }
         }, 2000)
+
+        binding.btnClose.setOnClickListener { finish() }
     }
 
     @SuppressLint("SetTextI18n")

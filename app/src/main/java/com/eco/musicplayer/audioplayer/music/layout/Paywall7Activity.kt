@@ -12,7 +12,7 @@ import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwFullScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class Paywall7Activity : AppCompatActivity() {
+class Paywall7Activity : BaseActivity() {
 
     private lateinit var binding: ActivityPwFullScreenBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -23,6 +23,8 @@ class Paywall7Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPwFullScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
 
         binding.btnClose.setOnClickListener { finish() }
 
@@ -47,7 +49,7 @@ class Paywall7Activity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val minHeight = (screenHeight * 0.68).toInt()
+        val minHeight = (screenHeight * 0.73).toInt()
 
         bottomSheetBehavior.apply {
             isFitToContents = true

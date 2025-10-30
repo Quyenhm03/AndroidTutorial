@@ -12,7 +12,7 @@ import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
-class Paywall6Activity : AppCompatActivity() {
+class Paywall6Activity : BaseActivity() {
 
     private lateinit var binding: ActivityPwBottomSheetBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
@@ -23,6 +23,8 @@ class Paywall6Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPwBottomSheetBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
 
         binding.btnClose.setOnClickListener { finish() }
 

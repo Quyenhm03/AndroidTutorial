@@ -10,7 +10,7 @@ import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityResultPwYearlyBinding
 import kotlin.random.Random
 
-class Paywall3Activity : AppCompatActivity() {
+class Paywall3Activity : BaseActivity() {
 
     private lateinit var binding: ActivityResultPwYearlyBinding
 
@@ -18,6 +18,8 @@ class Paywall3Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResultPwYearlyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
 
         binding.btnClose.setOnClickListener { finish() }
 

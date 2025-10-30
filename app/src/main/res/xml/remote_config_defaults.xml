@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<defaultsMap>
+
+    <entry>
+        <key>paywall_config</key>
+        <value>
+            {
+                "uiType": "4",
+                "products": [
+                    {
+                        "productId": "free_123",
+                        "offerId": "3days",
+                        "type": "subs"
+                    },
+                    {
+                        "productId": "test3",
+                        "offerId": "",
+                        "type": "lifetime"
+                    }
+                ],
+                "selectionPosition": 1
+            }
+        </value>
+    </entry>
+
+</defaultsMap>

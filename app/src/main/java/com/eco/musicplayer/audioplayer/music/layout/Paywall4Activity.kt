@@ -3,18 +3,17 @@ package com.eco.musicplayer.audioplayer.music.layout
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.ProductDetails
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwOnboardingBinding
 import com.eco.musicplayer.audioplayer.music.ggbilling.BillingManager
+import com.eco.musicplayer.audioplayer.music.remoteconfig.model.PaywallConfig
+import com.google.gson.Gson
 
-class Paywall4Activity : AppCompatActivity() {
+class Paywall4Activity : BaseActivity() {
 
     private lateinit var binding: ActivityPwOnboardingBinding
     private lateinit var billingManager: BillingManager
@@ -23,10 +22,14 @@ class Paywall4Activity : AppCompatActivity() {
     private var isEligible = true
     private var isProductsLoaded = false
 
+    private var paywallConfig: PaywallConfig? = null
+    private var subProductId: String = "free_123"
+    private var lifetimeProductId: String = "test3"
+    private var subOfferId: String? = "3days"
+    private var lifetimeOfferId: String? = null
+
     companion object {
         private const val TAG = "BillingDebug"
-        private const val SUB_PRODUCT_ID = "free_123"
-        private const val LIFETIME_PRODUCT_ID = "test3"
         private const val PLAN_WEEKLY = "WEEKLY"
         private const val PLAN_LIFETIME = "LIFETIME"
     }
@@ -35,6 +38,13 @@ class Paywall4Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPwOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hideSystemUI()
+
+        intent.getStringExtra("paywall_config")?.let { configJson ->
+            paywallConfig = Gson().fromJson(configJson, PaywallConfig::class.java)
+            parsePaywallConfig(paywallConfig)
+        }
 
         val extras = intent.extras
         val state = extras?.getInt("state", 0) ?: 0
@@ -61,13 +71,31 @@ class Paywall4Activity : AppCompatActivity() {
         stateIsLoading()
     }
 
-    private fun fetchProductDetailsAndSetupUI() {
-        Log.i(TAG, "Fetching product details for sub: $SUB_PRODUCT_ID and lifetime: $LIFETIME_PRODUCT_ID")
+    private fun parsePaywallConfig(config: PaywallConfig?) {
+        config?.products?.let { products ->
+            val subProduct = products.getOrNull(0)
+            subProduct?.let {
+                subProductId = it.productId ?: subProductId
+                subOfferId = it.offerId
+            }
 
-        billingManager.queryProductDetails(SUB_PRODUCT_ID, BillingClient.ProductType.SUBS) { details ->
+            val lifetimeProduct = products.getOrNull(1)
+            lifetimeProduct?.let {
+                lifetimeProductId = it.productId ?: lifetimeProductId
+                lifetimeOfferId = it.offerId
+            }
+
+            Log.d(TAG, "Parsed config - Sub: $subProductId (offer: $subOfferId), Lifetime: $lifetimeProductId (offer: $lifetimeOfferId)")
+        }
+    }
+
+    private fun fetchProductDetailsAndSetupUI() {
+        Log.i(TAG, "Fetching product details for sub: $subProductId and lifetime: $lifetimeProductId")
+
+        billingManager.queryProductDetails(subProductId, BillingClient.ProductType.SUBS) { details ->
             productDetailsSub = details
 
-            billingManager.queryProductDetails(LIFETIME_PRODUCT_ID, BillingClient.ProductType.INAPP) { lifetimeDetails ->
+            billingManager.queryProductDetails(lifetimeProductId, BillingClient.ProductType.INAPP) { lifetimeDetails ->
                 productDetailsLifetime = lifetimeDetails
 
                 if (details != null && lifetimeDetails != null) {
@@ -199,19 +227,26 @@ class Paywall4Activity : AppCompatActivity() {
         Log.d(TAG, "UpdateUIForPlan: plan=$plan, isEligible=$isEligible")
 
         binding.apply {
-            val isTrial = swTrial.isChecked && plan != PLAN_LIFETIME && binding.llFreeTrial.visibility == View.VISIBLE
+            val isTrial = swTrial.isChecked && plan != PLAN_LIFETIME
             llFreeTrial.visibility = if (plan == PLAN_LIFETIME || !isEligible ) View.GONE else View.VISIBLE
             swTrial.isEnabled = plan != PLAN_LIFETIME
 
             when (plan) {
                 PLAN_WEEKLY -> {
                     productDetailsSub?.let { details ->
-                        val offerId = if (isTrial) "3days" else null
-                        if (isTrial && isEligible) {
-                            val price = getFormattedPrice(details, offerId, 1)
-                            txtFee.text = getString(R.string.fee_trial, price, "3 days")
+                        val offerId = subOfferId
+                        val price = getFormattedPrice(details, offerId, 1)
+
+                        if (isTrial) {
+                            var pricePhase0 = getFormattedPrice(details, offerId, 0)
+                            if (pricePhase0 == "Miễn phí") {
+                                pricePhase0 = "3 days free trial"
+                            } else {
+                                pricePhase0 = "pay $pricePhase0 within 3 days"
+                            }
+
+                            txtFee.text = getString(R.string.fee_trial, price, pricePhase0)
                         } else {
-                            val price = getFormattedPrice(details, null, 0)
                             txtFee.text = getString(R.string.fee_not_trial, price)
                         }
                     } ?: run { txtFee.text = getString(R.string.error_loading_price) }
@@ -266,14 +301,14 @@ class Paywall4Activity : AppCompatActivity() {
         when (plan) {
             PLAN_WEEKLY -> {
                 productDetailsSub?.let { details ->
-                    val offerId = if (isTrial) "3days" else null
+                    val offerId = if (isTrial) subOfferId else lifetimeOfferId
                     Log.i(TAG, "Launching purchase for $plan with offer: ${offerId ?: "null"}")
                     billingManager.launchPurchaseFlow(this, details, offerId ?: "")
                 } ?: Log.e(TAG, "No sub product details")
             }
             PLAN_LIFETIME -> {
                 productDetailsLifetime?.let { details ->
-                    Log.i(TAG, "Launching purchase for lifetime: $LIFETIME_PRODUCT_ID")
+                    Log.i(TAG, "Launching purchase for lifetime: $lifetimeProductId")
                     billingManager.launchPurchaseFlow(this, details)
                 } ?: Log.e(TAG, "No lifetime product details")
             }

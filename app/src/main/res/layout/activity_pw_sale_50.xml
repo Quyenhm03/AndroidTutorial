@@ -31,7 +31,7 @@
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
             android:layout_marginStart="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_39sdp"
             android:background="@drawable/btn_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
         android:paddingBottom="@dimen/_20sdp"
         app:behavior_fitToContents="true"
         app:behavior_hideable="false"
-        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHeight_percent="0.44"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
         <androidx.appcompat.widget.AppCompatTextView

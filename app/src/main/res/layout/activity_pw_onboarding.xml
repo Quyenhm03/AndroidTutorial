@@ -16,17 +16,18 @@
             android:id="@+id/btnClose"
             android:layout_width="@dimen/_6sdp"
             android:layout_height="@dimen/_6sdp"
-            android:layout_marginTop="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_8sdp"
             android:layout_marginEnd="@dimen/_26sdp"
             android:background="@drawable/ic_cancel"
+            android:padding="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@id/toggleGroup" />
 
         <RadioGroup
             android:id="@+id/toggleGroup"
             android:layout_width="0dp"
             android:layout_height="@dimen/_28sdp"
-            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_47sdp"
             android:background="@drawable/bg_toggle"
             android:orientation="horizontal"
             android:padding="@dimen/_3sdp"
