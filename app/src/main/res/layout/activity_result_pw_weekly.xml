@@ -34,11 +34,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgLogoPro"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/ic_logo_pro"
-            app:layout_constraintDimensionRatio="H,6:1"
-            app:layout_constraintWidth_percent="0.72"
             app:layout_constraintEnd_toEndOf="@id/bgView"
             app:layout_constraintTop_toTopOf="@id/bgView"
             android:layout_marginTop="@dimen/_35sdp"
@@ -59,20 +57,28 @@
             app:layout_constraintTop_toBottomOf="@id/imgLogoPro"/>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/img30Percent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/txt30Percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_21sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/bg_30_percent_off_right"
-            app:layout_constraintWidth_percent="0.76"
-            app:layout_constraintDimensionRatio="H,1:0.67"
+            android:background="@drawable/ic_30_percent_weekly"
             app:layout_constraintEnd_toEndOf="@id/bgView"
             app:layout_constraintTop_toBottomOf="@id/txtDialogTitle" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/txtOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/ic_off_weekly"
+            app:layout_constraintEnd_toEndOf="@id/bgView"
+            app:layout_constraintTop_toBottomOf="@id/txt30Percent" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtTry"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/bg_radius_4"
@@ -84,10 +90,10 @@
             android:text="@string/try_text"
             android:textColor="@color/super_light"
             android:textSize="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintWidth_percent="0.76"
             app:layout_constraintEnd_toEndOf="@id/bgView"
-            app:layout_constraintStart_toStartOf="@id/img30Percent"
-            app:layout_constraintTop_toBottomOf="@id/img30Percent"
-            android:layout_marginTop="@dimen/_12sdp" />
+            app:layout_constraintTop_toBottomOf="@id/txtOff" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClaimOffer"

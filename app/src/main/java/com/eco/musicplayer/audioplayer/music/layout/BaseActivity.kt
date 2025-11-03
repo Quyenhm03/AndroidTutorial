@@ -21,7 +21,7 @@ open class BaseActivity : AppCompatActivity() {
             window.setDecorFitsSystemWindows(false)
 
             window.insetsController?.let { controller ->
-                // an navigation
+                // Ẩn navigation bar
                 controller.hide(WindowInsets.Type.navigationBars())
 
                 // Cho phép vuốt để hiện lại thanh điều hướng tạm thời
@@ -42,4 +42,36 @@ open class BaseActivity : AppCompatActivity() {
         window.navigationBarColor = Color.TRANSPARENT
     }
 
+    /**
+     * Đặt màu cho các icon trong status bar
+     * @param useLightIcons true = icon màu sáng (dùng cho nền tối)
+     *                      false = icon màu tối (dùng cho nền sáng)
+     */
+    fun setStatusBarIconsColor(useLightIcons: Boolean) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.insetsController?.let { controller ->
+                if (useLightIcons) {
+                    // Icon màu sáng (cho nền tối)
+                    controller.setSystemBarsAppearance(
+                        0,
+                        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                    )
+                } else {
+                    // Icon màu tối (cho nền sáng)
+                    controller.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+                    )
+                }
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            @Suppress("DEPRECATION")
+            val flags = window.decorView.systemUiVisibility
+            window.decorView.systemUiVisibility = if (useLightIcons) {
+                flags and View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR.inv()
+            } else {
+                flags or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            }
+        }
+    }
 }

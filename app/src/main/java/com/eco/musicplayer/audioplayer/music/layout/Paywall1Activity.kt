@@ -22,6 +22,7 @@ class Paywall1Activity : BaseActivity() {
         binding = ActivityPwSale50Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setStatusBarIconsColor(true)
         hideSystemUI()
 
         setupBottomSheet()

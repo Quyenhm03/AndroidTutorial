@@ -20,6 +20,7 @@ class Paywall5Activity : BaseActivity() {
         binding = ActivityUnlockFeatureBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setStatusBarIconsColor(false)
         hideSystemUI()
 
         stateIsLoading()

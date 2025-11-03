@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lauchmode.ActivityC">
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/txt_info"
@@ -24,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="30dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW1Success"
@@ -48,7 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW2Success"
@@ -72,7 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW3Success"
@@ -96,7 +98,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW4Normal"
@@ -120,7 +123,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW5Normal"
@@ -144,7 +148,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW6Normal"
@@ -168,7 +173,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="16dp">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPW7Normal"

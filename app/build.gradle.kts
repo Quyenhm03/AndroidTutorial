@@ -56,5 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("com.airbnb.android:lottie:6.4.0")
     implementation("com.intuit.sdp:sdp-android:1.1.1")
-    implementation("com.android.billingclient:billing-ktx:7.1.1")
+    implementation("com.android.billingclient:billing-ktx:8.0.0")
+    implementation(project(":billing"))
 }

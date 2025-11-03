@@ -25,6 +25,7 @@ class Paywall6Activity : BaseActivity() {
         setContentView(binding.root)
 
         hideSystemUI()
+        setStatusBarIconsColor(true)
 
         binding.btnClose.setOnClickListener { finish() }
 

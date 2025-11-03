@@ -24,6 +24,7 @@
             app:layout_constraintTop_toTopOf="@id/bgView"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
+            app:lottie_speed="1.25"
             app:lottie_rawRes="@raw/compress_pw_50" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -31,7 +32,7 @@
             android:layout_width="@dimen/_18sdp"
             android:layout_height="@dimen/_18sdp"
             android:layout_marginStart="@dimen/_14sdp"
-            android:layout_marginTop="@dimen/_39sdp"
+            android:layout_marginTop="@dimen/_43sdp"
             android:background="@drawable/btn_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +61,7 @@
             android:gravity="center_horizontal"
             android:text="@string/title_pw_sale"
             android:textColor="@color/super_light"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_20sdp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView

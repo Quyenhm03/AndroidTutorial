@@ -13,10 +13,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClose"
-            android:layout_width="@dimen/_6sdp"
-            android:layout_height="@dimen/_6sdp"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             android:background="@drawable/ic_cancel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/txtTitle" />
@@ -31,7 +32,7 @@
             android:textColor="#0E111B"
             android:textSize="@dimen/_43sdp"
             android:layout_marginTop="@dimen/_33sdp"
-            android:padding="@dimen/_10sdp"
+            android:padding="@dimen/_5sdp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView

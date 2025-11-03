@@ -5,6 +5,9 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.ProductDetails
 import com.eco.musicplayer.audioplayer.music.R
@@ -39,7 +42,9 @@ class Paywall4Activity : BaseActivity() {
         binding = ActivityPwOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setStatusBarIconsColor(false)
         hideSystemUI()
+        setupWindowInsets()
 
         intent.getStringExtra("paywall_config")?.let { configJson ->
             paywallConfig = Gson().fromJson(configJson, PaywallConfig::class.java)
@@ -70,6 +75,20 @@ class Paywall4Activity : BaseActivity() {
 
         stateIsLoading()
     }
+
+    private fun setupWindowInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.updatePadding(
+                top = systemBars.top,
+                bottom = 0
+            )
+
+            WindowInsetsCompat.CONSUMED
+        }
+    }
+
 
     private fun parsePaywallConfig(config: PaywallConfig?) {
         config?.products?.let { products ->
@@ -293,7 +312,12 @@ class Paywall4Activity : BaseActivity() {
             Log.i(TAG, "      Billing Cycle Count: ${phase.billingCycleCount}")
         }
 
-        val pricingPhase = selectedOffer.pricingPhases.pricingPhaseList.get(phase)
+        val pricingPhase = if (selectedOffer.pricingPhases.pricingPhaseList.size == 1) {
+            selectedOffer.pricingPhases.pricingPhaseList.last()
+        } else {
+            selectedOffer.pricingPhases.pricingPhaseList.get(phase)
+        }
+
         return pricingPhase.formattedPrice
     }
 

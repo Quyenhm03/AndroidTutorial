@@ -8,6 +8,9 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityPwFullScreenBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -24,7 +27,9 @@ class Paywall7Activity : BaseActivity() {
         binding = ActivityPwFullScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setStatusBarIconsColor(false)
         hideSystemUI()
+        setupWindowInsets()
 
         binding.btnClose.setOnClickListener { finish() }
 
@@ -45,16 +50,31 @@ class Paywall7Activity : BaseActivity() {
         }, 2000)
     }
 
+    private fun setupWindowInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { view, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
+            view.updatePadding(
+                top = systemBars.top,
+                bottom = 0
+            )
+
+            WindowInsetsCompat.CONSUMED
+        }
+
+        window.statusBarColor = Color.parseColor("#FFF6E7")
+    }
+
     private fun setupBottomSheet() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.adLayout)
 
         val screenHeight = resources.displayMetrics.heightPixels
-        val minHeight = (screenHeight * 0.73).toInt()
+        val minHeight = (screenHeight * 0.72).toInt()
 
         bottomSheetBehavior.apply {
             isFitToContents = true
             isHideable = false
-            state = BottomSheetBehavior.STATE_COLLAPSED
+            state = BottomSheetBehavior.STATE_EXPANDED
         }
 
         binding.adLayout.post {

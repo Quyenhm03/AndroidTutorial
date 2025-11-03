@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AndroidTutorial"
 include(":app")
+include(":billing")
  
