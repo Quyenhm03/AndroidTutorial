@@ -39,8 +39,8 @@ class ActivityE : AppCompatActivity() {
         binding.txtInfo.text = "ActivityE\nInstance Count: $instanceCount\nTaskID: $taskId"
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        Log.d(TAG, "onNewIntent called")
-    }
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        Log.d(TAG, "onNewIntent called")
+//    }
 }

@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityABinding
 import com.eco.musicplayer.audioplayer.music.permission.Permission
 
@@ -24,7 +26,7 @@ class ActivityA : AppCompatActivity() {
 
     private val permission: Permission by lazy { Permission(this) }
 
-    private var cnt = 0
+    private val viewModel: CounterViewModel by viewModels()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,26 +47,31 @@ class ActivityA : AppCompatActivity() {
                 }
             }
 
+        solveViewModel()
         setOnClick()
 
-        returnState(savedInstanceState)
+//        returnState(savedInstanceState)
     }
 
-    fun count() {
-        cnt++
-        binding.txtCount.text = cnt.toString()
-    }
+    fun solveViewModel() {
+        viewModel.count.observe(this, Observer { value ->
+            binding.txtCount.text = value.toString()
+        })
 
-    fun reset() {
-        cnt = 0
-        binding.txtCount.text = cnt.toString()
+        binding.btnIncrement.setOnClickListener {
+            viewModel.increment()
+        }
+
+        binding.btnDecrement.setOnClickListener {
+            viewModel.decrement()
+        }
     }
 
     // explicit intent
     fun switch() {
         val intent = Intent(this, ActivityB::class.java)
         val bundle = Bundle()
-        bundle.putInt(COUNT_KEY, cnt)
+        bundle.putString(COUNT_KEY, binding.txtCount.text.toString())
         bundle.putString("count_str", "Receive from ActivityA")
 
         intent.putExtras(bundle)
@@ -117,8 +124,6 @@ class ActivityA : AppCompatActivity() {
     }
 
     fun setOnClick() {
-        binding.btnCount.setOnClickListener { count() }
-        binding.btnReset.setOnClickListener { reset() }
         binding.btnSwitch.setOnClickListener { switch() }
         binding.btnOpenWeb.setOnClickListener {
             openWeb("https://www.google.com/")
@@ -129,23 +134,23 @@ class ActivityA : AppCompatActivity() {
         binding.btnGetResult.setOnClickListener {
             val intent = Intent(this, ActivityB::class.java)
             val bundle = Bundle()
-            bundle.putInt(COUNT_KEY, cnt)
+            bundle.putString(COUNT_KEY, binding.txtCount.text.toString())
             intent.putExtras(bundle)
             launcher.launch(intent)
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(COUNT_KEY, cnt)
-    }
-
-    fun returnState(savedInstanceState: Bundle?) {
-        savedInstanceState?.let {
-            cnt = it.getInt(COUNT_KEY)
-            binding.txtCount.text = cnt.toString()
-        }
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        outState.putInt(COUNT_KEY, cnt)
+//    }
+//
+//    fun returnState(savedInstanceState: Bundle?) {
+//        savedInstanceState?.let {
+//            cnt = it.getInt(COUNT_KEY)
+//            binding.txtCount.text = cnt.toString()
+//        }
+//    }
 
     override fun onStart() {
         super.onStart()

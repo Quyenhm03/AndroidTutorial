@@ -41,11 +41,11 @@ class ActivityD : AppCompatActivity() {
         binding.txtInfo.text = "ActivityD\nInstance Count: $instanceCount\nTaskID: $taskId"
     }
 
-    override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        Log.d(TAG, "onNewIntent called")
-        updateInfo()
-    }
+//    override fun onNewIntent(intent: Intent?) {
+//        super.onNewIntent(intent)
+//        Log.d(TAG, "onNewIntent called")
+//        updateInfo()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

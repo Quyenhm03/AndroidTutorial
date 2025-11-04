@@ -11,9 +11,12 @@ import com.android.billingclient.api.BillingResult
 import com.android.billingclient.api.ConsumeParams
 import com.android.billingclient.api.PendingPurchasesParams
 import com.android.billingclient.api.ProductDetails
+import com.android.billingclient.api.ProductDetailsResponseListener
 import com.android.billingclient.api.Purchase
+import com.android.billingclient.api.PurchasesResponseListener
 import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.QueryProductDetailsParams
+import com.android.billingclient.api.QueryProductDetailsResult
 import com.android.billingclient.api.QueryPurchasesParams
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -73,7 +76,11 @@ class BillingManager(
         })
     }
 
-    fun queryProductDetails(productId: String, productType: String, onResult: (ProductDetails?) -> Unit) {
+    fun queryProductDetails(
+        productId: String,
+        productType: String,
+        onResult: (ProductDetails?) -> Unit
+    ) {
         if (!isReady) {
             Log.e(TAG, "BillingClient not ready yet")
             onResult(null)
@@ -85,17 +92,23 @@ class BillingManager(
             .setProductId(productId)
             .setProductType(productType)
             .build()
+
         val params = QueryProductDetailsParams.newBuilder()
             .setProductList(listOf(product))
             .build()
 
-        billingClient.queryProductDetailsAsync(params) { billingResult, productDetailsList ->
-            Log.i(TAG, "Query result: ${billingResult.responseCode} - Details count: ${productDetailsList.size}")
+        billingClient.queryProductDetailsAsync(params) { billingResult, productDetailsResult ->
+            val productDetailsList = productDetailsResult.productDetailsList ?: emptyList()
+            Log.i(
+                TAG,
+                "Query result: ${billingResult.responseCode} - Details count: ${productDetailsList.size}"
+            )
+
             if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsList.isNotEmpty()) {
                 val details = productDetailsList[0]
 
                 details.subscriptionOfferDetails?.forEachIndexed { index, offer ->
-                    Log.i(TAG, "Offer $index (All Offers):")
+                    Log.i(TAG, "Offer $index:")
                     Log.i(TAG, "  Offer ID: ${offer.offerId}")
                     Log.i(TAG, "  Offer Tags: ${offer.offerTags}")
                     Log.i(TAG, "  Base Plan ID: ${offer.basePlanId}")
@@ -110,7 +123,11 @@ class BillingManager(
                         Log.i(TAG, "      Price Currency Code: ${phase.priceCurrencyCode}")
                     }
                 }
-                Log.i(TAG, "Product: ${details.title}, Price: ${details.oneTimePurchaseOfferDetails?.formattedPrice ?: "Sub offers: ${details.subscriptionOfferDetails?.size}"}")
+
+                Log.i(
+                    TAG,
+                    "Product: ${details.title}, Price: ${details.oneTimePurchaseOfferDetails?.formattedPrice ?: "Sub offers: ${details.subscriptionOfferDetails?.size}"}"
+                )
                 onResult(details)
             } else {
                 Log.e(TAG, "Query failed: ${billingResult.debugMessage}")
@@ -123,7 +140,8 @@ class BillingManager(
     fun launchPurchaseFlow(activity: Activity, productDetails: ProductDetails, offerId: String = "") {
         val offerToken = if (offerId.isNotEmpty()) {
             productDetails.subscriptionOfferDetails?.find {
-                it.offerId == offerId || it.offerTags.contains(offerId) }?.offerToken ?: ""
+                it.offerId == offerId || it.offerTags.contains(offerId)
+            }?.offerToken ?: ""
         } else {
             ""
         }
@@ -146,23 +164,41 @@ class BillingManager(
     }
 
     private fun queryExistingPurchases() {
-        Log.i(TAG, "Querying existing in-app purchases")
-        val params = QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.INAPP).build()
-        billingClient.queryPurchasesAsync(params) { billingResult, purchases ->
-            Log.i(TAG, "In-app query: ${billingResult.responseCode}, count: ${purchases.size}")
-            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                purchases.forEach { handlePurchase(it) }
-            }
-        }
+        Log.i(TAG, "Querying existing purchases (INAPP + SUBS)")
 
-        Log.i(TAG, "Querying existing subscriptions")
-        val subParams = QueryPurchasesParams.newBuilder().setProductType(BillingClient.ProductType.SUBS).build()
-        billingClient.queryPurchasesAsync(subParams) { billingResult, purchases ->
-            Log.i(TAG, "Subs query: ${billingResult.responseCode}, count: ${purchases.size}")
-            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
-                purchases.forEach { handlePurchase(it) }
+        // Query INAPP
+        val inAppParams = QueryPurchasesParams.newBuilder()
+            .setProductType(BillingClient.ProductType.INAPP)
+            .build()
+
+        billingClient.queryPurchasesAsync(inAppParams, object : PurchasesResponseListener {
+            override fun onQueryPurchasesResponse(
+                billingResult: BillingResult,
+                purchasesList: MutableList<Purchase>
+            ) {
+                Log.i(TAG, "INAPP purchases: ${billingResult.responseCode}, count=${purchasesList.size}")
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                    purchasesList.forEach { handlePurchase(it) }
+                }
             }
-        }
+        })
+
+        // Query SUBS
+        val subParams = QueryPurchasesParams.newBuilder()
+            .setProductType(BillingClient.ProductType.SUBS)
+            .build()
+
+        billingClient.queryPurchasesAsync(subParams, object : PurchasesResponseListener {
+            override fun onQueryPurchasesResponse(
+                billingResult: BillingResult,
+                purchasesList: MutableList<Purchase>
+            ) {
+                Log.i(TAG, "SUBS purchases: ${billingResult.responseCode}, count=${purchasesList.size}")
+                if (billingResult.responseCode == BillingClient.BillingResponseCode.OK) {
+                    purchasesList.forEach { handlePurchase(it) }
+                }
+            }
+        })
     }
 
     private fun handlePurchase(purchase: Purchase) {
@@ -192,7 +228,7 @@ class BillingManager(
     }
 
     private fun handlePurchaseUpdate(billingResult: BillingResult, purchases: List<Purchase>?) {
-        Log.i(TAG, "Purchase update: ${billingResult.responseCode}, purchases count: ${purchases?.size}")
+        Log.i(TAG, "Purchase update: ${billingResult.responseCode}, count=${purchases?.size ?: 0}")
         if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && !purchases.isNullOrEmpty()) {
             purchases.forEach { handlePurchase(it) }
         } else {
@@ -203,7 +239,10 @@ class BillingManager(
 
     private fun acknowledgePurchase(purchase: Purchase) {
         if (!purchase.isAcknowledged) {
-            val params = AcknowledgePurchaseParams.newBuilder().setPurchaseToken(purchase.purchaseToken).build()
+            val params = AcknowledgePurchaseParams.newBuilder()
+                .setPurchaseToken(purchase.purchaseToken)
+                .build()
+
             billingClient.acknowledgePurchase(params) { result ->
                 Log.i(TAG, "Acknowledge result: ${result.responseCode}")
                 if (result.responseCode != BillingClient.BillingResponseCode.OK) {

@@ -21,7 +21,7 @@ class ActivityB : AppCompatActivity() {
         Log.d(TAG, "OnCreate")
 
         val extras = intent.extras
-        val count = extras?.getInt(COUNT_KEY, 0) ?: 0
+        val count = extras?.getString(COUNT_KEY, "0") ?: "0"
         val countStr = extras?.getString("count_str") ?: "No string received"
 
         binding.txtReceive.text = count.toString()
