@@ -4,10 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityBBinding
+import com.google.gson.Gson
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
-class ActivityB : AppCompatActivity() {
+
+class ActivityB : BaseNetworkActivity() {
     private val TAG = "ActivityB"
     private val COUNT_KEY = "count_key"
 
@@ -26,7 +30,40 @@ class ActivityB : AppCompatActivity() {
 
         binding.txtReceive.text = count.toString()
 
+        receiveUserData()
         onClick()
+    }
+
+    fun receiveUserData() {
+        // Parcelable
+        val user1 = intent.getParcelableExtra<User1>("user1")
+        if (user1 != null) {
+            binding.txtReceive.text = "Parcelable: $user1"
+            return
+        }
+
+        // Serializable
+        val user2 = intent.getSerializableExtra("user2") as? User2
+        if (user2 != null) {
+            binding.txtReceive.text = "Serializable: $user2"
+            return
+        }
+
+        // JSON
+        val userJson = intent.getStringExtra("user")
+        if (userJson != null) {
+            val user = Gson().fromJson(userJson, User::class.java)
+            binding.txtReceive.text = "JSON: $user"
+            return
+        }
+
+        // ViewModel
+        val app = application as MyApp
+        app.sharedViewModel.user.observe(this) { user ->
+            if (user != null) {
+                binding.txtReceive.text = "ViewModel: $user"
+            }
+        }
     }
 
     fun onClick() {
@@ -43,8 +80,15 @@ class ActivityB : AppCompatActivity() {
         }
     }
 
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    fun onUserEvent(event: User) {
+        binding.txtReceive.text = event.toString()
+        EventBus.getDefault().removeStickyEvent(event)
+    }
+
     override fun onStart() {
         super.onStart()
+        EventBus.getDefault().register(this)
         Log.d(TAG, "OnStart")
     }
 
@@ -60,6 +104,7 @@ class ActivityB : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
+        EventBus.getDefault().unregister(this)
         Log.d(TAG, "OnStop")
     }
 

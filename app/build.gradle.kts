@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -60,4 +61,5 @@ dependencies {
     implementation("com.android.billingclient:billing-ktx:8.0.0")
     implementation(project(":billing"))
     implementation("androidx.activity:activity-ktx:1.9.0")
+    implementation("org.greenrobot:eventbus:3.3.1")
 }
