@@ -62,4 +62,6 @@ dependencies {
     implementation(project(":billing"))
     implementation("androidx.activity:activity-ktx:1.9.0")
     implementation("org.greenrobot:eventbus:3.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.0")
 }

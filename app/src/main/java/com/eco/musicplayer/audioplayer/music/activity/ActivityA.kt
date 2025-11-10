@@ -12,6 +12,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.Observer
 import androidx.activity.viewModels
+import com.eco.musicplayer.audioplayer.music.activityandfragment.NameActivity
+import com.eco.musicplayer.audioplayer.music.activityandservice.ConnectServiceActivity
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityABinding
 import com.eco.musicplayer.audioplayer.music.layout.BaseActivity
 import com.eco.musicplayer.audioplayer.music.permission.Permission
@@ -162,6 +164,16 @@ class ActivityA : BaseActivity() {
         binding.btnCheckPermission.setSafeOnClickListener {
             permission.requestPhotoPermissionWithRetry(this)
         }
+
+        binding.btnDemoConnectService.setOnClickListener {
+            val intent = Intent(this,ConnectServiceActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnDemoConnectFragment.setOnClickListener {
+            val intent = Intent(this, NameActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 //    override fun onSaveInstanceState(outState: Bundle) {
@@ -264,7 +276,7 @@ class ActivityA : BaseActivity() {
         val id = binding.edtId.text.toString()
         val name = binding.edtName.text.toString()
 
-        if (id.isNotEmpty() && name.isEmpty()) {
+        if (id.isNotEmpty() && name.isNotEmpty()) {
             val user = User(id, name)
             EventBus.getDefault().postSticky(user)
             val intent = Intent(this, ActivityB::class.java)
