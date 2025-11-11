@@ -28,8 +28,8 @@ class PayWallActivity : BaseActivity() {
             btnPW2Error.setOnClickListener{ showPaywall2Dialog(1)}
             btnPW3Success.setOnClickListener{ showPaywall3Dialog(0) }
             btnPW3Error.setOnClickListener{ showPaywall3Dialog(1) }
-            btnPW4Normal.setOnClickListener{ showPayWall(Paywall4Activity::class.java, 0)}
-            btnPW4NotEligible.setOnClickListener{ showPayWall(Paywall4Activity::class.java, 1)}
+            btnPW4Normal.setOnClickListener{ showPayWall(Paywall4ActivityNewBilling::class.java, 0)}
+            btnPW4NotEligible.setOnClickListener{ showPayWall(Paywall4ActivityNewBilling::class.java, 1)}
             btnPW5Normal.setOnClickListener{ showPayWall(Paywall5Activity::class.java, 0)}
             btnPW5NotEligible.setOnClickListener{ showPayWall(Paywall5Activity::class.java, 1)}
             btnPW6Normal.setOnClickListener{ showPayWall(Paywall6Activity::class.java, 0)}

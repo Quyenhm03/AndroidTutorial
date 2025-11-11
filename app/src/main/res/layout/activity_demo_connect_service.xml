@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="activity.ActivityA">
+    android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/txt_count"
+        android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="40sp"
@@ -58,5 +56,25 @@
             android:layout_marginBottom="15dp"
             android:text="Unbind Service"
             android:textAllCaps="false"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStartIntentService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="Start IntentService"
+            android:textAllCaps="false"/>
+
+        <TextView
+            android:id="@+id/txtReceiveFromBroadcast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_marginHorizontal="20dp"
+            android:textSize="20sp"/>
+
     </LinearLayout>
+
 </LinearLayout>

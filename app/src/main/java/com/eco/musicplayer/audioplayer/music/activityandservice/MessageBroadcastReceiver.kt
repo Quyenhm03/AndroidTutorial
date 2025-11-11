@@ -6,7 +6,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 
-class Broadcast(
+class MessageBroadcastReceiver(
     private val onMessageReceived: ((String) -> Unit)? = null
 ) : BroadcastReceiver() {
 
@@ -16,7 +16,7 @@ class Broadcast(
 
         onMessageReceived?.invoke(msg)
 
-        Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Received: $msg", Toast.LENGTH_LONG).show()
     }
 
 }

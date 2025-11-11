@@ -1,6 +1,5 @@
 package com.eco.musicplayer.audioplayer.music.activityandservice
 
-import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -8,15 +7,10 @@ import android.content.IntentFilter
 import android.content.ServiceConnection
 import android.os.Bundle
 import android.os.IBinder
-import android.util.Log
+import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.eco.musicplayer.audioplayer.music.R
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityDemoConnectServiceBinding
-import org.checkerframework.checker.units.qual.A
 
 class ConnectServiceActivity : AppCompatActivity() {
 
@@ -39,14 +33,7 @@ class ConnectServiceActivity : AppCompatActivity() {
 
     }
 
-    private val receiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            val msg = intent?.getStringExtra("msg")
-            Toast.makeText(this@ConnectServiceActivity, msg, Toast.LENGTH_LONG).show()
-            Log.d("ConnectServiceActivity", "Broadcast received: $msg")
-        }
-
-    }
+    private lateinit var receiver: MessageBroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +41,10 @@ class ConnectServiceActivity : AppCompatActivity() {
         binding = ActivityDemoConnectServiceBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // register broadcast receiver
+        receiver = MessageBroadcastReceiver { msg ->
+            binding.txtReceiveFromBroadcast.visibility = View.VISIBLE
+            binding.txtReceiveFromBroadcast.text = "Received from Broadcast: $msg"
+        }
         registerReceiver(receiver, IntentFilter("com.eco.musicplayer.audioplayer.music.activityandservice.MESSAGE"))
 
         solveOnClick()
@@ -81,6 +71,12 @@ class ConnectServiceActivity : AppCompatActivity() {
                 unbindService(connection)
                 isBound = false
             }
+        }
+
+        binding.btnStartIntentService.setOnClickListener {
+            val intent = Intent(this, LearnIntentService::class.java)
+            intent.putExtra("data", "Hello from Activity to IntentService")
+            startService(intent)
         }
     }
 

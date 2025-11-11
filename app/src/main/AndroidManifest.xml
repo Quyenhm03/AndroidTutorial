@@ -45,11 +45,20 @@
             android:name=".layout.Paywall4Activity"
             android:exported="false" />
         <activity
+            android:name=".layout.Paywall4ActivityNewBilling"
+            android:exported="false" />
+        <activity
             android:name=".layout.Paywall5Activity"
             android:exported="false" />
         <activity
             android:name=".layout.PayWallActivity"
-            android:exported="false"></activity>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".layout.Paywall1Activity"
             android:exported="false" />
@@ -58,7 +67,7 @@
             android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityC"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name=".lauchmode.ActivityD"
             android:exported="false"
@@ -74,15 +83,12 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <service android:name=".activityandservice.LearnService" />
+        <service android:name=".activityandservice.LearnIntentService" />
     </application>
 
 </manifest>
