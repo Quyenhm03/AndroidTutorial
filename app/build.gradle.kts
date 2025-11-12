@@ -64,4 +64,5 @@ dependencies {
     implementation("org.greenrobot:eventbus:3.3.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.fragment:fragment-ktx:1.8.0")
+    implementation("androidx.media:media:1.7.0")
 }

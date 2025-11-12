@@ -5,9 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.ProductDetails
 import com.eco.billing.BillingManager

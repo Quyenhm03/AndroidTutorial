@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
@@ -85,13 +86,14 @@ class Permission(private val context: Context) {
         )
     }
 
-    fun requestNotificationPermissionWithRetry(activity: Activity) {
+    fun requestNotificationPermissionWithRetry(activity: Activity, onGranted: () -> Unit = {}) {
         requestPermissionWithRetry(
             activity = activity,
             permissions = getNotificationPermissions(),
             requestCode = REQUEST_CODE_NOTIFICATION,
             permissionName = "Notification",
-            onDeniedThree = { showGoToSettingsDialog(activity, "Notification") }
+            onDeniedThree = { showGoToSettingsDialog(activity, "Notification") },
+            onGranted = onGranted
         )
     }
 
@@ -110,13 +112,21 @@ class Permission(private val context: Context) {
         permissions: Array<String>,
         requestCode: Int,
         permissionName: String,
-        onDeniedThree: () -> Unit
+        onDeniedThree: () -> Unit,
+        onGranted: () -> Unit = {}
     ) {
-        val mainPermission = permissions.firstOrNull() ?: return
+        if (permissions.isEmpty()) {
+            onGranted()
+            return
+        }
+
+        val mainPermission = permissions.first()
 
         when {
             isPermissionGranted(permissions) -> {
+                Log.d("Permission", "$permissionName already granted")
                 resetDenyCount(mainPermission)
+                onGranted()
             }
             else -> {
                 val denyCount = getDenyCount(mainPermission)
@@ -124,6 +134,7 @@ class Permission(private val context: Context) {
                     onDeniedThree()
                     resetDenyCount(mainPermission)
                 } else {
+                    Log.d("Permission", "Requesting $permissionName permission")
                     ActivityCompat.requestPermissions(activity, permissions, requestCode)
                 }
             }
@@ -137,17 +148,19 @@ class Permission(private val context: Context) {
         onGranted: () -> Unit
     ) {
         if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+            Log.d("Permission", "Permission granted: $requestCode")
             permissions.forEach { resetDenyCount(it) }
             onGranted()
         } else {
+            Log.d("Permission", "Permission denied: $requestCode")
             permissions.forEach { incrementDenyCount(it) }
         }
     }
 
     private fun showGoToSettingsDialog(activity: Activity, permissionName: String) {
         AlertDialog.Builder(activity)
-            .setTitle("Granted $permissionName")
-            .setMessage("App is granted $permissionName. Please granted in Setting.")
+            .setTitle("Permission Required")
+            .setMessage("$permissionName permission is required. Please enable it in Settings.")
             .setPositiveButton("Open Setting") { _, _ ->
                 openAppSettings(activity)
             }
