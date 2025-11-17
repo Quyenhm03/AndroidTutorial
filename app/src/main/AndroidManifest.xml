@@ -79,6 +79,12 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
+            android:exported="false">
+
+        </activity>
+
+        <activity
+            android:name=".roomdb.DemoRoomActivity"
             android:exported="true">
 
             <intent-filter>
