@@ -17,6 +17,7 @@ import com.eco.musicplayer.audioplayer.music.activityandservice.ConnectServiceAc
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityABinding
 import com.eco.musicplayer.audioplayer.music.layout.BaseActivity
 import com.eco.musicplayer.audioplayer.music.permission.Permission
+import com.eco.musicplayer.audioplayer.music.roomdb.DemoRoomActivity
 import com.google.gson.Gson
 import org.greenrobot.eventbus.EventBus
 
@@ -172,6 +173,11 @@ class ActivityA : BaseActivity() {
 
         binding.btnDemoConnectFragment.setOnClickListener {
             val intent = Intent(this, NameActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.btnDemoRoomDB.setOnClickListener {
+            val intent = Intent(this, DemoRoomActivity::class.java)
             startActivity(intent)
         }
     }

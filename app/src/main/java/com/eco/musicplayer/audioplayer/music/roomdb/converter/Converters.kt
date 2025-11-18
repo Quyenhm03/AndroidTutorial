@@ -11,6 +11,7 @@ class Converters {
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? = date?.time
 
+    // List <-> String
     @TypeConverter
     fun fromStringList(value: String?): List<String> =
         value?.split("|")?.filter { it.isNotEmpty() } ?: emptyList()

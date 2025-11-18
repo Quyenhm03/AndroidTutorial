@@ -16,11 +16,11 @@
             android:id="@+id/txt_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="80sp"
+            android:textSize="60sp"
             android:text="0"
             android:gravity="center_horizontal"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,6 +37,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Increment"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -46,6 +47,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Decrement"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Switch"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
         </LinearLayout>
 
@@ -121,6 +124,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Send with Serializable"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -128,6 +132,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="14sp"
                 android:text="Send with Parcelable"
                 android:textAllCaps="false"/>
         </LinearLayout>
@@ -156,6 +161,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Send with Json"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -163,6 +169,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="14sp"
                 android:text="Send with EventBus"
                 android:textAllCaps="false"/>
         </LinearLayout>
@@ -182,6 +189,7 @@
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:text="Send text"
+                android:textSize="14sp"
                 android:textAllCaps="false"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -189,6 +197,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textSize="14sp"
                 android:text="Check Permission"
                 android:textAllCaps="false"/>
         </LinearLayout>
@@ -207,6 +216,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
+                android:textSize="14sp"
                 android:text="Demo Connect Service"
                 android:textAllCaps="false"/>
 
@@ -215,7 +225,18 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                android:textSize="14sp"
                 android:text="Demo Connect Fragment"
+                android:textAllCaps="false"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnDemoRoomDB"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textSize="14sp"
+                android:text="Demo Room DB"
                 android:textAllCaps="false"/>
         </LinearLayout>
 
@@ -231,5 +252,7 @@
             android:gravity="center"
             android:visibility="gone"/>
     </LinearLayout>
+
+
 
 </ScrollView>

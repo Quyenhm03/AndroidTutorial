@@ -21,7 +21,7 @@ class DemoRoomActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val db = AppDatabase.getInstance(applicationContext)
-        val repo = UserRepository(db.userDao(), db.postDao())
+        val repo = UserRepository(db.userDao(), db.postDao(), applicationContext)
         val factory = UserViewModelFactory(repo)
         vm = ViewModelProvider(this, factory)[UserViewModel::class.java]
 
@@ -56,6 +56,18 @@ class DemoRoomActivity : AppCompatActivity() {
 
         binding.btnClear.setOnClickListener {
             vm.clearAll()
+        }
+
+        binding.btnQueryProvider.setOnClickListener {
+            vm.queryViaProvider()
+        }
+
+        binding.btnInsertProvider.setOnClickListener {
+            vm.insertViaProvider("Provider User", "provider@test.com")
+        }
+
+        binding.btnBulkInsert.setOnClickListener {
+            vm.bulkInsertViaProvider()
         }
     }
 
@@ -101,6 +113,14 @@ class DemoRoomActivity : AppCompatActivity() {
         }
 
         vm.count.observe(this) { total ->
+        }
+
+        vm.providerResult.observe(this) { result ->
+            binding.txtProviderResult.text = result
+        }
+
+        vm.count.observe(this) { total ->
+            binding.txtCount.text = "Total users: $total"
         }
     }
 }
