@@ -11,18 +11,16 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
-
     <uses-permission android:name="com.android.vending.BILLING" />
-
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
     <application
-        android:name=".activity.MyApp"
+        android:name=".ads.appopenads.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -32,6 +30,38 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidTutorial"
         tools:targetApi="31">
+        <activity
+            android:name=".ads.RewardedInterstitialAdsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ads.RewardedAdsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ads.NativeAdsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ads.interstitialads.SecondActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ads.interstitialads.InterstitialAdsActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713" />
+
+        <activity
+            android:name=".ads.AdsActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ads.BannerAdsActivity"
+            android:exported="false" />
         <activity
             android:name=".activityandservice.ConnectServiceActivity"
             android:exported="false" />
@@ -52,9 +82,7 @@
             android:exported="false" />
         <activity
             android:name=".layout.PayWallActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".layout.Paywall1Activity"
             android:exported="false" />
@@ -63,7 +91,7 @@
             android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityC"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".lauchmode.ActivityD"
             android:exported="false"
@@ -79,35 +107,23 @@
             android:exported="false" />
         <activity
             android:name=".activity.ActivityA"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="false" />
         <activity
             android:name=".roomdb.DemoRoomActivity"
-            android:exported="false">
-
-
-        </activity>
+            android:exported="false" />
 
         <service android:name=".activityandservice.LearnService" />
         <service android:name=".activityandservice.LearnIntentService" />
         <service
             android:name=".activityandservice.MusicForegroundService"
-            android:foregroundServiceType="mediaPlayback"
-            android:exported="false"/>
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <provider
             android:name=".roomdb.contentprovider.UserPostProvider"
             android:authorities="com.eco.musicplayer.audioplayer.music.roomdb.contentprovider"
             android:exported="true"
             android:grantUriPermissions="true" />
-
     </application>
 
 </manifest>

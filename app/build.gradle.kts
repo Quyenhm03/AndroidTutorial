@@ -67,6 +67,8 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.0")
     implementation("androidx.media:media:1.7.0")
 
+    implementation("com.google.android.gms:play-services-ads:24.8.0")
+
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
