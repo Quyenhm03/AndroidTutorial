@@ -2,8 +2,10 @@ package com.eco.musicplayer.audioplayer.music.ads
 
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.eco.musicplayer.audioplayer.music.databinding.ActivityBannerAdsBinding
@@ -22,6 +24,7 @@ class BannerAdsActivity : AppCompatActivity() {
     }
 
     private var adViewAdaptive: AdView? = null
+    private var adViewCollapsible: AdView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,7 +112,7 @@ class BannerAdsActivity : AppCompatActivity() {
         val newAdView = AdView(this)
         newAdView.adUnitId = "ca-app-pub-3940256099942544/9214589741"
 
-        val adaptiveSize = getAdaptiveAdSize()
+        val adaptiveSize = getAdaptiveAdSize(binding.containerAdaptive)
         newAdView.setAdSize(adaptiveSize)
 
         adViewAdaptive = newAdView
@@ -125,13 +128,13 @@ class BannerAdsActivity : AppCompatActivity() {
         binding.adViewInline.loadAd(adResquest)
     }
 
-    private fun getAdaptiveAdSize(): AdSize {
+    private fun getAdaptiveAdSize(container: View): AdSize {
         val display = windowManager.defaultDisplay
         val outMetrics = DisplayMetrics()
         display.getMetrics(outMetrics)
 
         val density = outMetrics.density
-        var adWidthPixels = binding.containerAdaptive.width.toFloat()
+        var adWidthPixels = container.width.toFloat()
         if (adWidthPixels == 0f) {
             adWidthPixels = outMetrics.widthPixels.toFloat()
         }
@@ -141,13 +144,32 @@ class BannerAdsActivity : AppCompatActivity() {
     }
 
     private fun loadCollapsibleBanner() {
-        val extras = Bundle()
-        extras.putString("collapsible", "bottom")
+        adViewCollapsible?.let {
+            binding.adContainerBottom.removeView(it)
+            it.destroy()
+        }
+
+        // newAdView = AdView(application) -> ko hiển thị quảng cáo
+        val newAdView = AdView(this).apply {
+            adUnitId = "ca-app-pub-3940256099942544/9214589741"
+            setAdSize(getAdaptiveAdSize(binding.adContainerBottom))
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+        }
+
+        adViewCollapsible = newAdView
+        binding.adContainerBottom.addView(newAdView)
+
+        val extras = Bundle().apply {
+            putString("collapsible", "bottom")
+        }
 
         val adRequest = AdRequest.Builder()
             .addNetworkExtrasBundle(AdMobAdapter::class.java, extras)
             .build()
 
-        binding.adViewCollapsible.loadAd(adRequest)
+        newAdView.loadAd(adRequest)
     }
 }

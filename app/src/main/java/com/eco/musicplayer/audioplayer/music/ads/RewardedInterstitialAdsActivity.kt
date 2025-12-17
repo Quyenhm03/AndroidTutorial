@@ -72,6 +72,8 @@ class RewardedInterstitialAdsActivity : AppCompatActivity() {
                     "Rewarded Interstitial Shown",
                     Toast.LENGTH_SHORT
                 ).show()
+
+                AdsManager.recordFullScreenAdShown(this@RewardedInterstitialAdsActivity)
             }
 
             override fun onAdDismissedFullScreenContent() {
@@ -92,6 +94,7 @@ class RewardedInterstitialAdsActivity : AppCompatActivity() {
                     "Failed to show: ${error.message}",
                     Toast.LENGTH_SHORT
                 ).show()
+
                 rewardedInterstitialAd = null
                 continueAction()
                 loadRewardedInterstitialAd()
@@ -112,6 +115,19 @@ class RewardedInterstitialAdsActivity : AppCompatActivity() {
     }
 
     private fun showRewardedInterstitialOrContinue() {
+        if (!AdsManager.canShowFullScreenAd(this)) {
+            val remainingSeconds = AdsManager.getRemainingCoolOffSeconds(this)
+            Toast.makeText(
+                this,
+                "Bỏ qua quảng cáo. Vui lòng chờ $remainingSeconds giây nữa",
+                Toast.LENGTH_LONG
+            ).show()
+
+            continueAction()
+            loadRewardedInterstitialAd()
+            return
+        }
+
         if (rewardedInterstitialAd != null) {
             rewardedInterstitialAd?.show(this) { rewardItem ->
                 val amount = rewardItem.amount

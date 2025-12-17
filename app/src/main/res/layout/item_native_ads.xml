@@ -3,7 +3,7 @@
     android:id="@+id/nativeAdView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
+    android:background="@drawable/bg_ad"
     android:padding="12dp">
 
     <LinearLayout

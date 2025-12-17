@@ -39,12 +39,23 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="10dp"/>
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adViewStandard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/9214589741" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/bg_ad"
+                android:layout_height="55dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adViewStandard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    ads:adSize="BANNER"
+                    android:layout_gravity="center"
+                    ads:adUnitId="ca-app-pub-3940256099942544/9214589741" />
+            </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +91,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 ads:adSize="LARGE_BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+                ads:adUnitId="ca-app-pub-3940256099942544/9214589741" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,18 +108,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="6dp"
-        android:background="#EEEEEE"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adViewCollapsible"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-3940256099942544/9214589741" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
