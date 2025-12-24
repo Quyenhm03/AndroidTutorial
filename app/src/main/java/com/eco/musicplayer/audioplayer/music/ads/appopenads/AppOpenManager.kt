@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import com.eco.musicplayer.audioplayer.music.ads.AdsManager
 import com.eco.musicplayer.audioplayer.music.ads.SplashActivity
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -25,7 +24,9 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
 
     private var activityCount: Int = 0
     private var isAppInForeground = false
-    private var isFirstLaunch = true
+    private var wasInBackground = false
+
+    private var isInSplashScreen = true
 
     private val appOpenAdUnitId = "ca-app-pub-3940256099942544/9257395921"
 
@@ -33,7 +34,14 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
 
     init {
         myApplication.registerActivityLifecycleCallbacks(this)
-        loadAd()
+        handler.postDelayed({
+            loadAd()
+        }, 2000)
+    }
+
+    fun setInSplashScreen(inSplash: Boolean) {
+        isInSplashScreen = inSplash
+        Log.d("AppOpenManager", "setInSplashScreen: $inSplash")
     }
 
     private fun loadAd() {
@@ -72,24 +80,34 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
     }
 
     private fun showAdIfAvailable() {
+        if (isInSplashScreen) {
+            Log.d("AppOpenManager", "Skip - Still in splash screen")
+            return
+        }
+
         if (currentActivity is SplashActivity) {
             Log.d("AppOpenManager", "Skip showing ad on SplashActivity")
             return
         }
 
         if (isShowingAd) {
-            Log.d("AppOpenManager", "Ad showing")
+            Log.d("AppOpenManager", "Ad is already showing")
             return
         }
 
-        if (!AdsManager.canShowFullScreenAd(myApplication)) {
-            val remainingSeconds = AdsManager.getRemainingCoolOffSeconds(myApplication)
-            Log.d("AppOpenManager", "Skip Open Ad. Remaining $remainingSeconds s coolOff")
+        if (!isAppInForeground) {
+            Log.d("AppOpenManager", "App is not in foreground, skip showing ad")
+            return
+        }
+
+        if (!wasInBackground) {
+            Log.d("AppOpenManager", "Not returning from background, skip")
             return
         }
 
         if (!isAdAvailable()) {
-            Log.d("AppOpenManager", "Ad not ready, loading again")
+            Log.d("AppOpenManager", "Ad expired/not ready -> drop & reload")
+            appOpenAd = null
             loadAd()
             return
         }
@@ -102,16 +120,14 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
         appOpenAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
             override fun onAdShowedFullScreenContent() {
                 isShowingAd = true
+                wasInBackground = false
                 Log.d("AppOpenManager", "Ad Showed")
-
-                AdsManager.recordFullScreenAdShown(myApplication)
             }
 
             override fun onAdDismissedFullScreenContent() {
                 isShowingAd = false
                 appOpenAd = null
                 Log.d("AppOpenManager", "Ad Dismissed")
-
                 loadAd()
             }
 
@@ -119,6 +135,7 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
                 Log.d("AppOpenManager", "Failed to show: ${error.message}")
                 isShowingAd = false
                 appOpenAd = null
+                wasInBackground = false
                 loadAd()
             }
 
@@ -142,33 +159,28 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
 
     override fun onActivityStarted(activity: Activity) {
         activityCount++
-
-        Log.d("AppOpenManager", "onActivityStarted: ${activity.javaClass.simpleName}, activityCount = $activityCount, wasInBackground = ${!isAppInForeground}")
-
         currentActivity = activity
+
+        val wasInBackgroundBefore = !isAppInForeground
 
         if (!isAppInForeground) {
             isAppInForeground = true
-            Log.d("AppOpenManager", "App moved to FOREGROUND")
+            if (activityCount == 1 && !isInSplashScreen) {
+                wasInBackground = true
+                Log.d("AppOpenManager", "App moved to FOREGROUND from BACKGROUND")
+            }
         }
     }
 
     override fun onActivityResumed(activity: Activity) {
         currentActivity = activity
 
-        Log.d("AppOpenManager", "onActivityResumed: ${activity.javaClass.simpleName}, activityCount = $activityCount, isFirstLaunch = $isFirstLaunch")
-
-        if (!isFirstLaunch && activityCount == 1 && isAppInForeground && !isShowingAd) {
-            Log.d("AppOpenManager", "App resumed from background - Attempting to show App Open Ad")
+        if (wasInBackground && !isInSplashScreen && !isShowingAd) {
+            Log.d("AppOpenManager", "App resumed from background - showing ad")
 
             handler.postDelayed({
                 showAdIfAvailable()
-            }, 100)
-        }
-
-        if (isFirstLaunch && activity !is SplashActivity) {
-            isFirstLaunch = false
-            Log.d("AppOpenManager", "First launch completed")
+            }, 300)
         }
     }
 
@@ -177,8 +189,6 @@ class AppOpenManager(private val myApplication: MyApplication) : Application.Act
 
     override fun onActivityStopped(activity: Activity) {
         activityCount--
-
-        Log.d("AppOpenManager", "onActivityStopped: ${activity.javaClass.simpleName}, activityCount = $activityCount")
 
         if (activityCount == 0) {
             isAppInForeground = false
